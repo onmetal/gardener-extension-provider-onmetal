@@ -12,6 +12,12 @@ import (
 	"github.com/gardener/gardener/extensions/pkg/controller"
 	extensionsv1alpha1 "github.com/gardener/gardener/pkg/apis/extensions/v1alpha1"
 	"github.com/go-logr/logr"
+
+	api "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal/helper"
+	apiv1alpha1 "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal/v1alpha1"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/onmetal"
+
 	"github.com/onmetal/onmetal-api/api/common/v1alpha1"
 	ipamv1alpha1 "github.com/onmetal/onmetal-api/api/ipam/v1alpha1"
 	networkingv1alpha1 "github.com/onmetal/onmetal-api/api/networking/v1alpha1"
@@ -21,11 +27,6 @@ import (
 	"k8s.io/utils/ptr"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
-
-	api "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal"
-	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal/helper"
-	apiv1alpha1 "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal/v1alpha1"
-	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/onmetal"
 )
 
 const (
@@ -102,7 +103,6 @@ func (a *actuator) applyPrefix(ctx context.Context, onmetalClient client.Client,
 }
 
 func (a *actuator) applyNATGateway(ctx context.Context, config *api.InfrastructureConfig, onmetalClient client.Client, namespace string, cluster *controller.Cluster, network *networkingv1alpha1.Network) (*networkingv1alpha1.NATGateway, error) {
-
 	natGateway := &networkingv1alpha1.NATGateway{
 		TypeMeta: metav1.TypeMeta{
 			Kind:       "NATGateway",
