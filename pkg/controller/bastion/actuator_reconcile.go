@@ -72,7 +72,7 @@ func (a *actuator) reconcile(ctx context.Context, log logr.Logger, bastion *exte
 	if err != nil {
 		return fmt.Errorf("failed to get onmetal client and namespace from cloudprovider secret: %w", err)
 	}
-	infraStatus, err := getInfrastructureStatus(ctx, onmetalClient, cluster)
+	infraStatus, err := getInfrastructureStatus(ctx, a.Client(), cluster)
 	if err != nil {
 		return fmt.Errorf("failed to get infrastructure status: %w", err)
 	}
