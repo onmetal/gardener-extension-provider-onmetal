@@ -30,6 +30,7 @@ import (
 	webhookcmd "github.com/gardener/gardener/extensions/pkg/webhook/cmd"
 	gardenerhealthz "github.com/gardener/gardener/pkg/healthz"
 	machinev1alpha1 "github.com/gardener/machine-controller-manager/pkg/apis/machine/v1alpha1"
+	onmetalbackupbucket "github.com/onmetal/gardener-extension-provider-onmetal/pkg/controller/backupbucket"
 	onmetalbastion "github.com/onmetal/gardener-extension-provider-onmetal/pkg/controller/bastion"
 	"github.com/spf13/cobra"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -65,6 +66,11 @@ func NewControllerManagerCommand(ctx context.Context) *cobra.Command {
 			HealthBindAddress:          ":8081",
 		}
 		configFileOpts = &onmetalcmd.ConfigOptions{}
+
+		// options for the backupbucket controller
+		backupBucketCtrlOpts = &controllercmd.ControllerOptions{
+			MaxConcurrentReconciles: 5,
+		}
 
 		// options for the health care controller
 		healthCheckCtrlOpts = &controllercmd.ControllerOptions{
@@ -128,6 +134,7 @@ func NewControllerManagerCommand(ctx context.Context) *cobra.Command {
 			controllercmd.PrefixOption("healthcheck-", healthCheckCtrlOpts),
 			controllercmd.PrefixOption("heartbeat-", heartbeatCtrlOpts),
 			controllercmd.PrefixOption("bastion-", bastionCtrlOpts),
+			controllercmd.PrefixOption("backupbucket-", backupBucketCtrlOpts),
 			configFileOpts,
 			controllerSwitches,
 			reconcileOpts,
@@ -187,11 +194,13 @@ func NewControllerManagerCommand(ctx context.Context) *cobra.Command {
 			configFileOpts.Completed().ApplyBastionConfig(&onmetalbastion.DefaultAddOptions.BastionConfig)
 			heartbeatCtrlOpts.Completed().Apply(&heartbeat.DefaultAddOptions)
 			infraCtrlOpts.Completed().Apply(&infrastructurecontroller.DefaultAddOptions.Controller)
-			reconcileOpts.Completed().Apply(&infrastructurecontroller.DefaultAddOptions.IgnoreOperationAnnotation)
-			reconcileOpts.Completed().Apply(&workercontroller.DefaultAddOptions.IgnoreOperationAnnotation)
 			workerCtrlOpts.Completed().Apply(&workercontroller.DefaultAddOptions.Controller)
 			bastionCtrlOpts.Completed().Apply(&bastioncontroller.DefaultAddOptions.Controller)
+			backupBucketCtrlOpts.Completed().Apply(&onmetalbackupbucket.DefaultAddOptions.Controller)
 			reconcileOpts.Completed().Apply(&bastioncontroller.DefaultAddOptions.IgnoreOperationAnnotation)
+			reconcileOpts.Completed().Apply(&infrastructurecontroller.DefaultAddOptions.IgnoreOperationAnnotation)
+			reconcileOpts.Completed().Apply(&workercontroller.DefaultAddOptions.IgnoreOperationAnnotation)
+			reconcileOpts.Completed().Apply(&onmetalbackupbucket.DefaultAddOptions.IgnoreOperationAnnotation)
 
 			if _, err := webhookOptions.Completed().AddToManager(ctx, mgr); err != nil {
 				return fmt.Errorf("could not add webhooks to manager: %w", err)
