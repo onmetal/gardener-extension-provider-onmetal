@@ -12,4 +12,6 @@ const (
 	StorageClassDefaultKeyName = "default"
 	// StorageClassExpandableKeyName is the expandable key name of the StorageClass value map
 	StorageClassExpandableKeyName = "expandable"
+	// StorageClassPoolKeyName is the pool key name of the StorageClass value map
+	StorageClassPoolKeyName = "pool"
 )

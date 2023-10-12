@@ -18,6 +18,9 @@ allowVolumeExpansion: true
 {{- else }}
 allowVolumeExpansion: false
 {{- end }}
+{{- if $value.pool }}
+volume_pool: {{ $value.pool }}
+{{- end }}
 provisioner: csi.onmetal.de
 reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
