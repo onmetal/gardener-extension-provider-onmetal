@@ -9,7 +9,7 @@ require (
 	github.com/coreos/butane v0.19.0
 	github.com/coreos/go-systemd/v22 v22.5.0
 	github.com/gardener/etcd-druid/api v0.6.0
-	github.com/gardener/gardener v1.84.1
+	github.com/gardener/gardener v1.85.0
 	github.com/gardener/machine-controller-manager v0.50.1
 	github.com/go-logr/logr v1.3.0
 	github.com/imdario/mergo v0.3.16
@@ -96,6 +96,7 @@ require (
 	github.com/prometheus/common v0.44.0 // indirect
 	github.com/prometheus/procfs v0.10.1 // indirect
 	github.com/shopspring/decimal v1.2.0 // indirect
+	github.com/spf13/afero v1.9.5 // indirect
 	github.com/spf13/cast v1.5.1 // indirect
 	github.com/stretchr/testify v1.8.4 // indirect
 	github.com/vincent-petithory/dataurl v1.0.0 // indirect
@@ -118,8 +119,8 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	istio.io/api v0.0.0-20230217221049-9d422bf48675 // indirect
-	istio.io/client-go v1.17.1 // indirect
+	istio.io/api v1.19.2-0.20231011000955-f3015ebb5bd4 // indirect
+	istio.io/client-go v1.19.3 // indirect
 	k8s.io/apiserver v0.28.4 // indirect
 	k8s.io/helm v2.17.0+incompatible // indirect
 	k8s.io/klog/v2 v2.100.1 // indirect
