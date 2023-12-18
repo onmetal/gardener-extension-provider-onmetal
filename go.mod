@@ -27,7 +27,7 @@ require (
 	k8s.io/autoscaler/vertical-pod-autoscaler v1.0.0
 	k8s.io/client-go v0.29.0
 	k8s.io/component-base v0.29.0
-	k8s.io/kubelet v0.28.4
+	k8s.io/kubelet v0.29.0
 	k8s.io/utils v0.0.0-20230726121419-3b25d923346b
 	sigs.k8s.io/controller-runtime v0.16.3
 	sigs.k8s.io/yaml v1.4.0
@@ -54,7 +54,7 @@ require (
 	github.com/evanphx/json-patch v5.6.0+incompatible // indirect
 	github.com/evanphx/json-patch/v5 v5.6.0 // indirect
 	github.com/fluent/fluent-operator/v2 v2.2.0 // indirect
-	github.com/fsnotify/fsnotify v1.6.0 // indirect
+	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/gardener/hvpa-controller/api v0.5.0 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-logr/zapr v1.2.4 // indirect
@@ -114,7 +114,7 @@ require (
 	golang.org/x/tools v0.14.0 // indirect
 	gomodules.xyz/jsonpatch/v2 v2.4.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	google.golang.org/genproto v0.0.0-20230711160842-782d3b101e98 // indirect
+	google.golang.org/genproto v0.0.0-20230803162519-f966b187b2e5 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20230726155614-23370e0ffb3e // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
@@ -122,7 +122,7 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	istio.io/api v1.19.2-0.20231011000955-f3015ebb5bd4 // indirect
 	istio.io/client-go v1.19.3 // indirect
-	k8s.io/apiserver v0.28.4 // indirect
+	k8s.io/apiserver v0.29.0 // indirect
 	k8s.io/helm v2.17.0+incompatible // indirect
 	k8s.io/klog/v2 v2.110.1 // indirect
 	k8s.io/kube-aggregator v0.28.3 // indirect
