@@ -9,7 +9,7 @@ require (
 	github.com/coreos/butane v0.19.0
 	github.com/coreos/go-systemd/v22 v22.5.0
 	github.com/gardener/etcd-druid/api v0.6.0
-	github.com/gardener/gardener v1.86.0
+	github.com/gardener/gardener v1.86.1
 	github.com/gardener/machine-controller-manager v0.51.1
 	github.com/go-logr/logr v1.4.1
 	github.com/imdario/mergo v0.3.16
