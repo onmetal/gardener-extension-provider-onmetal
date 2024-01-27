@@ -206,6 +206,7 @@ func (vp *valuesProvider) GetConfigChartValues(
 	return map[string]interface{}{
 		onmetal.NetworkFieldName: infrastructureStatus.NetworkRef.Name,
 		onmetal.PrefixFieldName:  infrastructureStatus.PrefixRef.Name,
+		onmetal.ClusterFieldName: cluster.ObjectMeta.Name,
 	}, nil
 }
 

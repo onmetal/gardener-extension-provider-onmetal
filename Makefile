@@ -105,8 +105,8 @@ docker-login:
 
 .PHONY: docker-images
 docker-images:
-	@docker build $(BUILDARGS) -t $(IMAGE_PREFIX)/$(NAME):latest           -f Dockerfile -m 6g --target $(EXTENSION_PREFIX)-$(NAME) .
-	@docker build $(BUILDARGS) -t $(IMAGE_PREFIX)/$(ADMISSION_NAME):latest -f Dockerfile -m 6g --target $(EXTENSION_PREFIX)-$(ADMISSION_NAME) .
+	@docker build $(BUILDARGS) -t $(IMAGE_PREFIX)/$(NAME):latest           -f Dockerfile -m 6g --target $(EXTENSION_PREFIX)-$(NAME) . --load
+	@docker build $(BUILDARGS) -t $(IMAGE_PREFIX)/$(ADMISSION_NAME):latest -f Dockerfile -m 6g --target $(EXTENSION_PREFIX)-$(ADMISSION_NAME) . --load
 
 #####################################################################
 # Rules for verification, formatting, linting, testing and cleaning #
