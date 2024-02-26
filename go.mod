@@ -1,7 +1,6 @@
 module github.com/onmetal/gardener-extension-provider-onmetal
 
 go 1.21
-
 require (
 	github.com/Masterminds/semver v1.5.0
 	github.com/Masterminds/sprig v2.22.0+incompatible
@@ -9,7 +8,7 @@ require (
 	github.com/coreos/butane v0.20.0
 	github.com/coreos/go-systemd/v22 v22.5.0
 	github.com/gardener/etcd-druid/api v0.6.0
-	github.com/gardener/gardener v1.88.0
+	github.com/gardener/gardener v1.89.0
 	github.com/gardener/machine-controller-manager v0.52.0
 	github.com/go-logr/logr v1.4.1
 	github.com/imdario/mergo v0.3.16
