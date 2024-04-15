@@ -1,6 +1,8 @@
 module github.com/onmetal/gardener-extension-provider-onmetal
 
 go 1.21
+toolchain go1.22.2
+
 require (
 	github.com/Masterminds/semver v1.5.0
 	github.com/Masterminds/sprig v2.22.0+incompatible
@@ -23,7 +25,7 @@ require (
 	k8s.io/api v0.29.3
 	k8s.io/apiextensions-apiserver v0.29.3
 	k8s.io/apimachinery v0.29.3
-	k8s.io/autoscaler/vertical-pod-autoscaler v1.0.0
+	k8s.io/autoscaler/vertical-pod-autoscaler v1.1.0
 	k8s.io/client-go v0.29.3
 	k8s.io/component-base v0.29.3
 	k8s.io/kubelet v0.29.3
