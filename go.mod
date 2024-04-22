@@ -28,7 +28,7 @@ require (
 	k8s.io/autoscaler/vertical-pod-autoscaler v1.1.0
 	k8s.io/client-go v0.30.0
 	k8s.io/component-base v0.30.0
-	k8s.io/kubelet v0.29.4
+	k8s.io/kubelet v0.30.0
 	k8s.io/utils v0.0.0-20240310230437-4693a0247e57
 	sigs.k8s.io/controller-runtime v0.17.3
 	sigs.k8s.io/yaml v1.4.0
