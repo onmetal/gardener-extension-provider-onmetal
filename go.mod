@@ -1,7 +1,7 @@
 module github.com/onmetal/gardener-extension-provider-onmetal
 
 go 1.21
-toolchain go1.22.3
+toolchain go1.22.4
 
 require (
 	github.com/Masterminds/semver v1.5.0
@@ -18,7 +18,7 @@ require (
 	github.com/onmetal/onmetal-api v0.1.2-0.20230928225058-754dd4d16010
 	github.com/onsi/ginkgo/v2 v2.19.0
 	github.com/onsi/gomega v1.33.1
-	github.com/spf13/cobra v1.8.0
+	github.com/spf13/cobra v1.8.1
 	github.com/spf13/pflag v1.0.6-0.20210604193023-d5e0c0615ace
 	go.uber.org/mock v0.4.0
 	go.uber.org/zap v1.27.0
