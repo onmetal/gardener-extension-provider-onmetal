@@ -93,8 +93,8 @@ github.com/gardener/gardener v1.98.2 h1:gD7ZqUZet/OP8x6uiwjBzFOCvsgWDewF5IwWtaE6
 github.com/gardener/gardener v1.98.2/go.mod h1:EfvKbBF53a52Wz16/Qe8hhpTZTaJ/P+CRWRr35BVVq0=
 github.com/gardener/hvpa-controller/api v0.15.0 h1:igsalL5Z6kFMn1+Kv1Eq0cRjYW+4oBA1aEY/yDO2QtI=
 github.com/gardener/hvpa-controller/api v0.15.0/go.mod h1:fqb4wNrQLESDKpm7ppXyCM2Gvx96wRlLL35aH0ge07U=
-github.com/gardener/machine-controller-manager v0.53.0 h1:g2O0F7nEYZ9LjyPY6Gew8+q0n+rU88deexNq5k8CKks=
-github.com/gardener/machine-controller-manager v0.53.0/go.mod h1:XWXHaTy32TU0qmLjWqOgtw8NncdB0HfFzXhUUrcpr7Y=
+github.com/gardener/machine-controller-manager v0.53.1 h1:4P9qtzoD+989Lhc8XaI6Zo3X2TaQVXgHHrbEpuhJcrI=
+github.com/gardener/machine-controller-manager v0.53.1/go.mod h1:XWXHaTy32TU0qmLjWqOgtw8NncdB0HfFzXhUUrcpr7Y=
 github.com/ghodss/yaml v0.0.0-20150909031657-73d445a93680/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/go-logr/logr v0.1.0/go.mod h1:ixOQHD9gLJUVQQ2ZOR7zLEifBX6tGkNJF4QyIY7sIas=
 github.com/go-logr/logr v0.2.0/go.mod h1:z6/tIYblkpsD+a4lm/fGIIU9mZ+XfAiaFtq7xTgseGU=
