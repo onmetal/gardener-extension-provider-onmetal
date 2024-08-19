@@ -25,7 +25,7 @@ require (
 	k8s.io/api v0.31.0
 	k8s.io/apiextensions-apiserver v0.29.7
 	k8s.io/apimachinery v0.31.0
-	k8s.io/autoscaler/vertical-pod-autoscaler v1.1.2
+	k8s.io/autoscaler/vertical-pod-autoscaler v1.2.0
 	k8s.io/client-go v0.31.0
 	k8s.io/component-base v0.31.0
 	k8s.io/kubelet v0.31.0
