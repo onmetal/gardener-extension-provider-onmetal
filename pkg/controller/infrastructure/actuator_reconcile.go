@@ -127,7 +127,7 @@ func (a *actuator) applyNATGateway(ctx context.Context, config *api.Infrastructu
 		},
 	}
 
-	if portsPerNetworkInterface := config.NATPortsPerNetworkInterface; natGateway.Spec.IPFamily == corev1.IPv4Protocol && portsPerNetworkInterface != nil {
+	if portsPerNetworkInterface := config.NATPortsPerNetworkInterface; natGateway.Spec.IPFamilies[0] == corev1.IPv4Protocol && portsPerNetworkInterface != nil {
 		if nodeCIDR := cluster.Shoot.Spec.Networking.Nodes; nodeCIDR != nil {
 			_, ipv4Net, err := net.ParseCIDR(*nodeCIDR)
 			if err != nil {
