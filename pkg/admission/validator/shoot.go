@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package validator
@@ -18,9 +18,9 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/manager"
 
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/admission"
-	apisironcore "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/ironcore"
-	ironcorevalidation "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/ironcore/validation"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/admission"
+	apisonmetal "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal"
+	onmetalvalidation "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal/validation"
 )
 
 type shoot struct {
@@ -67,8 +67,8 @@ var (
 
 type validationContext struct {
 	shoot                *core.Shoot
-	infrastructureConfig *apisironcore.InfrastructureConfig
-	controlPlaneConfig   *apisironcore.ControlPlaneConfig
+	infrastructureConfig *apisonmetal.InfrastructureConfig
+	controlPlaneConfig   *apisonmetal.ControlPlaneConfig
 	cloudProfileSpec     *gardencorev1beta1.CloudProfileSpec
 }
 
@@ -77,10 +77,10 @@ func (s *shoot) validateContext(valContext *validationContext) field.ErrorList {
 		allErrors = field.ErrorList{}
 	)
 
-	allErrors = append(allErrors, ironcorevalidation.ValidateNetworking(valContext.shoot.Spec.Networking, networkPath)...)
-	allErrors = append(allErrors, ironcorevalidation.ValidateInfrastructureConfig(valContext.infrastructureConfig, valContext.shoot.Spec.Networking.Nodes, valContext.shoot.Spec.Networking.Pods, valContext.shoot.Spec.Networking.Services, infrastructureConfigPath)...)
-	allErrors = append(allErrors, ironcorevalidation.ValidateWorkers(valContext.shoot.Spec.Provider.Workers, workersPath)...)
-	allErrors = append(allErrors, ironcorevalidation.ValidateControlPlaneConfig(valContext.controlPlaneConfig, valContext.shoot.Spec.Kubernetes.Version, controlPlaneConfigPath)...)
+	allErrors = append(allErrors, onmetalvalidation.ValidateNetworking(valContext.shoot.Spec.Networking, networkPath)...)
+	allErrors = append(allErrors, onmetalvalidation.ValidateInfrastructureConfig(valContext.infrastructureConfig, valContext.shoot.Spec.Networking.Nodes, valContext.shoot.Spec.Networking.Pods, valContext.shoot.Spec.Networking.Services, infrastructureConfigPath)...)
+	allErrors = append(allErrors, onmetalvalidation.ValidateWorkers(valContext.shoot.Spec.Provider.Workers, workersPath)...)
+	allErrors = append(allErrors, onmetalvalidation.ValidateControlPlaneConfig(valContext.controlPlaneConfig, valContext.shoot.Spec.Kubernetes.Version, controlPlaneConfigPath)...)
 
 	return allErrors
 }
@@ -112,14 +112,14 @@ func (s *shoot) validateUpdate(ctx context.Context, oldShoot, currentShoot *core
 	)
 
 	if !reflect.DeepEqual(oldInfrastructureConfig, currentInfrastructureConfig) {
-		allErrors = append(allErrors, ironcorevalidation.ValidateInfrastructureConfigUpdate(oldInfrastructureConfig, currentInfrastructureConfig, infrastructureConfigPath)...)
+		allErrors = append(allErrors, onmetalvalidation.ValidateInfrastructureConfigUpdate(oldInfrastructureConfig, currentInfrastructureConfig, infrastructureConfigPath)...)
 	}
 
 	if !reflect.DeepEqual(oldControlPlaneConfig, currentControlPlaneConfig) {
-		allErrors = append(allErrors, ironcorevalidation.ValidateControlPlaneConfigUpdate(oldControlPlaneConfig, currentControlPlaneConfig, controlPlaneConfigPath)...)
+		allErrors = append(allErrors, onmetalvalidation.ValidateControlPlaneConfigUpdate(oldControlPlaneConfig, currentControlPlaneConfig, controlPlaneConfigPath)...)
 	}
 
-	allErrors = append(allErrors, ironcorevalidation.ValidateWorkersUpdate(oldValContext.shoot.Spec.Provider.Workers, currentValContext.shoot.Spec.Provider.Workers, workersPath)...)
+	allErrors = append(allErrors, onmetalvalidation.ValidateWorkersUpdate(oldValContext.shoot.Spec.Provider.Workers, currentValContext.shoot.Spec.Provider.Workers, workersPath)...)
 	allErrors = append(allErrors, s.validateContext(currentValContext)...)
 
 	return allErrors.ToAggregate()
@@ -128,7 +128,7 @@ func (s *shoot) validateUpdate(ctx context.Context, oldShoot, currentShoot *core
 
 func newValidationContext(ctx context.Context, decoder runtime.Decoder, c client.Client, shoot *core.Shoot) (*validationContext, error) {
 	if shoot.Spec.Provider.InfrastructureConfig == nil {
-		return nil, field.Required(infrastructureConfigPath, "infrastructureConfig must be set for ironcore shoots")
+		return nil, field.Required(infrastructureConfigPath, "infrastructureConfig must be set for onmetal shoots")
 	}
 	infrastructureConfig, err := admission.DecodeInfrastructureConfig(decoder, shoot.Spec.Provider.InfrastructureConfig)
 	if err != nil {
@@ -136,7 +136,7 @@ func newValidationContext(ctx context.Context, decoder runtime.Decoder, c client
 	}
 
 	if shoot.Spec.Provider.ControlPlaneConfig == nil {
-		return nil, field.Required(controlPlaneConfigPath, "controlPlaneConfig must be set for ironcore shoots")
+		return nil, field.Required(controlPlaneConfigPath, "controlPlaneConfig must be set for onmetal shoots")
 	}
 	controlPlaneConfig, err := admission.DecodeControlPlaneConfig(decoder, shoot.Spec.Provider.ControlPlaneConfig)
 	if err != nil {

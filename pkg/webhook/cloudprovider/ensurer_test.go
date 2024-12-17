@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package cloudprovider
@@ -21,7 +21,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/client-go/tools/clientcmd"
 
-	api "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/ironcore"
+	api "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal"
 )
 
 const namespace = "test"

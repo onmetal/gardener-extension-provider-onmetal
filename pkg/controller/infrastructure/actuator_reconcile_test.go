@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package infrastructure
@@ -9,9 +9,9 @@ import (
 	extensionscontroller "github.com/gardener/gardener/extensions/pkg/controller"
 	"github.com/gardener/gardener/pkg/apis/core/v1beta1/constants"
 	extensionsv1alpha1 "github.com/gardener/gardener/pkg/apis/extensions/v1alpha1"
-	commonv1alpha1 "github.com/ironcore-dev/ironcore/api/common/v1alpha1"
-	ipamv1alpha1 "github.com/ironcore-dev/ironcore/api/ipam/v1alpha1"
-	networkingv1alpha1 "github.com/ironcore-dev/ironcore/api/networking/v1alpha1"
+	commonv1alpha1 "github.com/onmetal/onmetal-api/api/common/v1alpha1"
+	ipamv1alpha1 "github.com/onmetal/onmetal-api/api/ipam/v1alpha1"
+	networkingv1alpha1 "github.com/onmetal/onmetal-api/api/networking/v1alpha1"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 	corev1 "k8s.io/api/core/v1"
@@ -21,8 +21,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	. "sigs.k8s.io/controller-runtime/pkg/envtest/komega"
 
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/ironcore/v1alpha1"
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/ironcore"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal/v1alpha1"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/onmetal"
 )
 
 var _ = Describe("Infrastructure Reconcile", func() {
@@ -53,7 +53,7 @@ var _ = Describe("Infrastructure Reconcile", func() {
 			},
 			Spec: extensionsv1alpha1.InfrastructureSpec{
 				DefaultSpec: extensionsv1alpha1.DefaultSpec{
-					Type: ironcore.Type,
+					Type: onmetal.Type,
 					ProviderConfig: &runtime.RawExtension{Object: &v1alpha1.InfrastructureConfig{
 						TypeMeta: metav1.TypeMeta{
 							APIVersion: v1alpha1.SchemeGroupVersion.String(),
@@ -117,7 +117,7 @@ var _ = Describe("Infrastructure Reconcile", func() {
 
 		By("ensuring that the infrastructure state contains the correct refs")
 		providerStatus := map[string]interface{}{
-			"apiVersion": "ironcore.provider.extensions.gardener.cloud/v1alpha1",
+			"apiVersion": "onmetal.provider.extensions.gardener.cloud/v1alpha1",
 			"kind":       "InfrastructureStatus",
 			"networkRef": map[string]interface{}{
 				"name": network.Name,
@@ -156,7 +156,7 @@ var _ = Describe("Infrastructure Reconcile", func() {
 			},
 			Spec: extensionsv1alpha1.InfrastructureSpec{
 				DefaultSpec: extensionsv1alpha1.DefaultSpec{
-					Type: ironcore.Type,
+					Type: onmetal.Type,
 					ProviderConfig: &runtime.RawExtension{Object: &v1alpha1.InfrastructureConfig{
 						TypeMeta: metav1.TypeMeta{
 							APIVersion: v1alpha1.SchemeGroupVersion.String(),
@@ -225,7 +225,7 @@ var _ = Describe("Infrastructure Reconcile", func() {
 
 		By("ensuring that the infrastructure state contains the correct refs")
 		providerStatus := map[string]interface{}{
-			"apiVersion": "ironcore.provider.extensions.gardener.cloud/v1alpha1",
+			"apiVersion": "onmetal.provider.extensions.gardener.cloud/v1alpha1",
 			"kind":       "InfrastructureStatus",
 			"networkRef": map[string]interface{}{
 				"name": network.Name,
@@ -272,7 +272,7 @@ var _ = Describe("Infrastructure Reconcile", func() {
 			},
 			Spec: extensionsv1alpha1.InfrastructureSpec{
 				DefaultSpec: extensionsv1alpha1.DefaultSpec{
-					Type: ironcore.Type,
+					Type: onmetal.Type,
 					ProviderConfig: &runtime.RawExtension{Object: &v1alpha1.InfrastructureConfig{
 						TypeMeta: metav1.TypeMeta{
 							APIVersion: v1alpha1.SchemeGroupVersion.String(),

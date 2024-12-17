@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package cloudprovider
@@ -18,8 +18,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/manager"
 
-	apisironcore "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/ironcore"
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/ironcore"
+	apisonmetal "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/onmetal"
 )
 
 // NewEnsurer creates cloudprovider ensurer.
@@ -40,17 +40,17 @@ type ensurer struct {
 // EnsureCloudProviderSecret ensures that cloudprovider secret contains
 // the shared credentials file.
 func (e *ensurer) EnsureCloudProviderSecret(ctx context.Context, gctx gcontext.GardenContext, newCloudProviderSecret, _ *corev1.Secret) error {
-	token, ok := newCloudProviderSecret.Data[ironcore.TokenFieldName]
+	token, ok := newCloudProviderSecret.Data[onmetal.TokenFieldName]
 	if !ok {
-		return fmt.Errorf("could not mutate cloudprovider secret as %q field is missing", ironcore.TokenFieldName)
+		return fmt.Errorf("could not mutate cloudprovider secret as %q field is missing", onmetal.TokenFieldName)
 	}
-	namespace, ok := newCloudProviderSecret.Data[ironcore.NamespaceFieldName]
+	namespace, ok := newCloudProviderSecret.Data[onmetal.NamespaceFieldName]
 	if !ok {
-		return fmt.Errorf("could not mutate cloudprovider secret as %q field is missing", ironcore.NamespaceFieldName)
+		return fmt.Errorf("could not mutate cloudprovider secret as %q field is missing", onmetal.NamespaceFieldName)
 	}
-	username, ok := newCloudProviderSecret.Data[ironcore.UsernameFieldName]
+	username, ok := newCloudProviderSecret.Data[onmetal.UsernameFieldName]
 	if !ok {
-		return fmt.Errorf("could not mutate cloud provider secret as %q fied is missing", ironcore.UsernameFieldName)
+		return fmt.Errorf("could not mutate cloud provider secret as %q fied is missing", onmetal.UsernameFieldName)
 	}
 
 	cluster, err := gctx.GetCluster(ctx)
@@ -58,7 +58,7 @@ func (e *ensurer) EnsureCloudProviderSecret(ctx context.Context, gctx gcontext.G
 		return fmt.Errorf("failed to get cluster: %w", err)
 	}
 
-	cloudProfileConfig := &apisironcore.CloudProfileConfig{}
+	cloudProfileConfig := &apisonmetal.CloudProfileConfig{}
 	raw, err := cluster.CloudProfile.Spec.ProviderConfig.MarshalJSON()
 	if err != nil {
 		return fmt.Errorf("could not decode cluster object's providerConfig: %w", err)
@@ -106,6 +106,6 @@ func (e *ensurer) EnsureCloudProviderSecret(ctx context.Context, gctx gcontext.G
 		return fmt.Errorf("failed to encode kubeconfig: %w", err)
 	}
 
-	newCloudProviderSecret.Data[ironcore.KubeConfigFieldName] = raw
+	newCloudProviderSecret.Data[onmetal.KubeConfigFieldName] = raw
 	return nil
 }

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package backupentry
@@ -14,7 +14,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3"
 	corev1 "k8s.io/api/core/v1"
 
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/ironcore"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/onmetal"
 )
 
 //go:generate $MOCKGEN -copyright_file ../../../hack/license-header.txt -package backupentry -destination=mock_backupentry.go -source backupentry.go S3ClientGetter,S3ObjectLister
@@ -85,19 +85,19 @@ func GetS3ClientFromS3ClientSecret(secret *corev1.Secret) (*s3.S3, error) {
 		return nil, fmt.Errorf("secret does not contain any data")
 	}
 
-	accessKeyID, ok := secret.Data[ironcore.AccessKeyID]
+	accessKeyID, ok := secret.Data[onmetal.AccessKeyID]
 	if !ok {
-		return nil, fmt.Errorf("missing %q field in secret", ironcore.AccessKeyID)
+		return nil, fmt.Errorf("missing %q field in secret", onmetal.AccessKeyID)
 	}
 
-	secretAccessKey, ok := secret.Data[ironcore.SecretAccessKey]
+	secretAccessKey, ok := secret.Data[onmetal.SecretAccessKey]
 	if !ok {
-		return nil, fmt.Errorf("missing %q field in secret", ironcore.SecretAccessKey)
+		return nil, fmt.Errorf("missing %q field in secret", onmetal.SecretAccessKey)
 	}
 
-	endpoint, ok := secret.Data[ironcore.Endpoint]
+	endpoint, ok := secret.Data[onmetal.Endpoint]
 	if !ok {
-		return nil, fmt.Errorf("missing %q field in secret", ironcore.Endpoint)
+		return nil, fmt.Errorf("missing %q field in secret", onmetal.Endpoint)
 	}
 
 	endpointStr := string(endpoint)

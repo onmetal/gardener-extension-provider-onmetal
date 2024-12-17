@@ -16,8 +16,8 @@ is_nodeless() {
 IP_ROUTE=$(ip route get 1)
 IP_ADDRESS=$(echo ${IP_ROUTE#*src} | awk '{print $1}')
 
-ADMISSION_SERVICE_NAME="gardener-extension-admission-ironcore"
-ADMISSION_ENDPOINT_NAME="gardener-extension-admission-ironcore"
+ADMISSION_SERVICE_NAME="gardener-extension-admission-onmetal"
+ADMISSION_ENDPOINT_NAME="gardener-extension-admission-onmetal"
 
 ADMISSION_EXTERNAL_NAME=gardener.localhost
 if [[ "$(uname -s)" == *"Darwin"* ]] || [[ "$(uname -s)" == "Linux" && "$(uname -r)" =~ "microsoft-standard" ]] ; then

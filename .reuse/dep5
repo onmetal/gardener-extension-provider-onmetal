@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: gardener-extension-provider-ironcore
-Upstream-Contact: IronCore authors <ospo@sap.com>
-Source: https://github.com/ironcore-dev/gardener-extension-provider-ironcore
+Upstream-Name: gardener-extension-provider-onmetal
+Upstream-Contact: onMetal authors <ospo@sap.com>
+Source: https://github.com/onmetal/gardener-extension-provider-onmetal
 
 # --------------------------------------------------
 # source code
@@ -23,7 +23,7 @@ Files:
   charts/*
   imagevector/images.yaml
   pkg/controller/bastion/ignition/template.yaml
-Copyright: 2023 SAP SE or an SAP affiliate company and IronCore contributors
+Copyright: 2023 SAP SE or an SAP affiliate company and onMetal contributors
 License: Apache-2.0
 
 # --------------------------------------------------
@@ -32,7 +32,7 @@ License: Apache-2.0
 Files:
   docs/*
   README.md
-Copyright: 2023 SAP SE or an SAP affiliate company and IronCore contributors
+Copyright: 2023 SAP SE or an SAP affiliate company and onMetal contributors
 License: Apache-2.0
 
 # --------------------------------------------------

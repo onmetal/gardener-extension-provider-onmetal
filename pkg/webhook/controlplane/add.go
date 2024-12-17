@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package controlplane
@@ -15,11 +15,11 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/manager"
 
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/ironcore"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/onmetal"
 )
 
 var (
-	logger = log.Log.WithName("ironcore-controlplane-webhook")
+	logger = log.Log.WithName("onmetal-controlplane-webhook")
 	// GardenletManagesMCM specifies whether the machine-controller-manager should be managed.
 	GardenletManagesMCM bool
 )
@@ -30,7 +30,7 @@ func AddToManager(mgr manager.Manager) (*extensionswebhook.Webhook, error) {
 	fciCodec := oscutils.NewFileContentInlineCodec()
 	return controlplane.New(mgr, controlplane.Args{
 		Kind:     controlplane.KindShoot,
-		Provider: ironcore.Type,
+		Provider: onmetal.Type,
 		Types: []extensionswebhook.Type{
 			{Obj: &appsv1.Deployment{}},
 			{Obj: &vpaautoscalingv1.VerticalPodAutoscaler{}},

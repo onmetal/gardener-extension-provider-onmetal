@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package backupentry
@@ -11,7 +11,7 @@ import (
 	"github.com/gardener/gardener/extensions/pkg/controller/backupentry/genericactuator"
 	extensionsv1alpha1 "github.com/gardener/gardener/pkg/apis/extensions/v1alpha1"
 	"github.com/go-logr/logr"
-	storagev1alpha1 "github.com/ironcore-dev/ironcore/api/storage/v1alpha1"
+	storagev1alpha1 "github.com/onmetal/onmetal-api/api/storage/v1alpha1"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 	"go.uber.org/mock/gomock"
@@ -42,7 +42,7 @@ var _ = Describe("BackupEntry Delete", func() {
 
 	It("should delete Backupentry", func(ctx SpecContext) {
 
-		By("creating an Ironcore bucket resource")
+		By("creating an Onmetal bucket resource")
 		bucketName := "test-bucket"
 		bucket := &storagev1alpha1.Bucket{
 			ObjectMeta: metav1.ObjectMeta{
@@ -63,7 +63,7 @@ var _ = Describe("BackupEntry Delete", func() {
 		}
 		Expect(k8sClient.Create(ctx, bucket)).Should(Succeed())
 
-		By("creating a secret with credentials data to access ironcore bucket")
+		By("creating a secret with credentials data to access onmetal bucket")
 		secret := &corev1.Secret{
 			ObjectMeta: metav1.ObjectMeta{
 				Namespace: ns.Name,
@@ -78,7 +78,7 @@ var _ = Describe("BackupEntry Delete", func() {
 		Expect(k8sClient.Create(ctx, secret)).To(Succeed())
 		DeferCleanup(k8sClient.Delete, secret)
 
-		By("patching ironcore bucket with available state and credentials secret")
+		By("patching onmetal bucket with available state and credentials secret")
 		bucketBase := bucket.DeepCopy()
 		bucket.Status.State = storagev1alpha1.BucketStateAvailable
 		bucket.Status.Access = &storagev1alpha1.BucketAccess{

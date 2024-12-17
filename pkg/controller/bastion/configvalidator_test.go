@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package bastion
@@ -16,7 +16,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/ironcore"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/onmetal"
 )
 
 var _ = Describe("ConfigValidator", func() {
@@ -85,7 +85,7 @@ var _ = Describe("ConfigValidator", func() {
 
 			Spec: gardenerextensionv1alpha1.BastionSpec{
 				DefaultSpec: gardenerextensionv1alpha1.DefaultSpec{
-					Type: ironcore.Type,
+					Type: onmetal.Type,
 				},
 				UserData: []byte("abcd"),
 				Ingress: []gardenerextensionv1alpha1.BastionIngressPolicy{{
@@ -110,7 +110,7 @@ var _ = Describe("ConfigValidator", func() {
 
 			Spec: gardenerextensionv1alpha1.BastionSpec{
 				DefaultSpec: gardenerextensionv1alpha1.DefaultSpec{
-					Type: ironcore.Type,
+					Type: onmetal.Type,
 				},
 				UserData: []byte("abcd"),
 				Ingress: []gardenerextensionv1alpha1.BastionIngressPolicy{{
@@ -135,7 +135,7 @@ var _ = Describe("ConfigValidator", func() {
 
 			Spec: gardenerextensionv1alpha1.BastionSpec{
 				DefaultSpec: gardenerextensionv1alpha1.DefaultSpec{
-					Type: ironcore.Type,
+					Type: onmetal.Type,
 				},
 				UserData: []byte("abcd"),
 				Ingress: []gardenerextensionv1alpha1.BastionIngressPolicy{{

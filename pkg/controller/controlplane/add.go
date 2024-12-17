@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package controlplane
@@ -13,8 +13,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/controller"
 	"sigs.k8s.io/controller-runtime/pkg/manager"
 
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/imagevector"
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/ironcore"
+	"github.com/onmetal/gardener-extension-provider-onmetal/imagevector"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/onmetal"
 )
 
 var (
@@ -22,7 +22,7 @@ var (
 	DefaultAddOptions = AddOptions{}
 )
 
-// AddOptions are options to apply when adding the ironcore controlplane controller to the manager.
+// AddOptions are options to apply when adding the onmetal controlplane controller to the manager.
 type AddOptions struct {
 	// Controller are the controller.Options.
 	Controller controller.Options
@@ -36,7 +36,7 @@ type AddOptions struct {
 // The opts.Reconciler is being set with a newly instantiated actuator.
 func AddToManagerWithOptions(ctx context.Context, mgr manager.Manager, opts AddOptions) error {
 	genericActuator, err := genericactuator.NewActuator(mgr,
-		ironcore.ProviderName,
+		onmetal.ProviderName,
 		secretConfigsFunc,
 		shootAccessSecretsFunc,
 		nil,
@@ -50,7 +50,7 @@ func AddToManagerWithOptions(ctx context.Context, mgr manager.Manager, opts AddO
 		NewValuesProvider(mgr),
 		extensionscontroller.ChartRendererFactoryFunc(util.NewChartRendererForShoot),
 		imagevector.ImageVector(),
-		ironcore.CloudProviderConfigName,
+		onmetal.CloudProviderConfigName,
 		nil,
 		opts.WebhookServerNamespace)
 
@@ -62,7 +62,7 @@ func AddToManagerWithOptions(ctx context.Context, mgr manager.Manager, opts AddO
 		Actuator:          genericActuator,
 		ControllerOptions: opts.Controller,
 		Predicates:        controlplane.DefaultPredicates(ctx, mgr, opts.IgnoreOperationAnnotation),
-		Type:              ironcore.Type,
+		Type:              onmetal.Type,
 	})
 }
 

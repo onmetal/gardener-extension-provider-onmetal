@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package loader
@@ -11,8 +11,8 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/serializer/json"
 	"k8s.io/apimachinery/pkg/runtime/serializer/versioning"
 
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/config"
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/config/install"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/config"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/config/install"
 )
 
 var (

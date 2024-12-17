@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package worker
@@ -10,7 +10,7 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/ironcore"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/onmetal"
 )
 
 func (w *workerDelegate) GetMachineControllerManagerChartValues(ctx context.Context) (map[string]interface{}, error) {
@@ -20,7 +20,7 @@ func (w *workerDelegate) GetMachineControllerManagerChartValues(ctx context.Cont
 	}
 
 	return map[string]interface{}{
-		"providerName": ironcore.ProviderName,
+		"providerName": onmetal.ProviderName,
 		"namespace": map[string]interface{}{
 			"uid": namespace.UID,
 		},
@@ -32,6 +32,6 @@ func (w *workerDelegate) GetMachineControllerManagerChartValues(ctx context.Cont
 
 func (w *workerDelegate) GetMachineControllerManagerShootChartValues(ctx context.Context) (map[string]interface{}, error) {
 	return map[string]interface{}{
-		"providerName": ironcore.ProviderName,
+		"providerName": onmetal.ProviderName,
 	}, nil
 }

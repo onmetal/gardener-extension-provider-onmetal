@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package backupbucket
@@ -10,15 +10,15 @@ import (
 
 	v1beta1constants "github.com/gardener/gardener/pkg/apis/core/v1beta1/constants"
 	extensionsv1alpha1 "github.com/gardener/gardener/pkg/apis/extensions/v1alpha1"
-	storagev1alpha1 "github.com/ironcore-dev/ironcore/api/storage/v1alpha1"
+	storagev1alpha1 "github.com/onmetal/onmetal-api/api/storage/v1alpha1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/wait"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 
-	controllerconfig "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/config"
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/ironcore"
+	controllerconfig "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/config"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/onmetal"
 )
 
 const (
@@ -27,8 +27,8 @@ const (
 	waitBucketActiveSteps = 19
 )
 
-// ensureBackupBucket creates ironcore backupBucket object and returns access to bucket
-func (a *actuator) ensureBackupBucket(ctx context.Context, namespace string, ironcoreClient client.Client, backupBucket *extensionsv1alpha1.BackupBucket) error {
+// ensureBackupBucket creates onmetal backupBucket object and returns access to bucket
+func (a *actuator) ensureBackupBucket(ctx context.Context, namespace string, onmetalClient client.Client, backupBucket *extensionsv1alpha1.BackupBucket) error {
 	bucket := &storagev1alpha1.Bucket{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      backupBucket.Name,
@@ -40,17 +40,17 @@ func (a *actuator) ensureBackupBucket(ctx context.Context, namespace string, iro
 			},
 		},
 	}
-	//create ironcore bucket
-	if _, err := controllerutil.CreateOrPatch(ctx, ironcoreClient, bucket, nil); err != nil {
+	//create onmetal bucket
+	if _, err := controllerutil.CreateOrPatch(ctx, onmetalClient, bucket, nil); err != nil {
 		return fmt.Errorf("failed to create or patch backup bucket %s: %w", client.ObjectKeyFromObject(bucket), err)
 	}
 	//wait for bucket creation
-	if err := waitBackupBucketToAvailable(ctx, ironcoreClient, bucket); err != nil {
+	if err := waitBackupBucketToAvailable(ctx, onmetalClient, bucket); err != nil {
 		return fmt.Errorf("could not determine status of backup bucket %w", err)
 	}
 
 	accessSecret := &corev1.Secret{}
-	if err := ironcoreClient.Get(ctx, client.ObjectKey{Namespace: namespace, Name: bucket.Status.Access.SecretRef.Name}, accessSecret); err != nil {
+	if err := onmetalClient.Get(ctx, client.ObjectKey{Namespace: namespace, Name: bucket.Status.Access.SecretRef.Name}, accessSecret); err != nil {
 		return fmt.Errorf("failed to get bucket access secret %s: %w", client.ObjectKeyFromObject(accessSecret), err)
 	}
 	//update backupBucket secret
@@ -60,7 +60,7 @@ func (a *actuator) ensureBackupBucket(ctx context.Context, namespace string, iro
 	return nil
 }
 
-func waitBackupBucketToAvailable(ctx context.Context, ironcoreClient client.Client, bucket *storagev1alpha1.Bucket) error {
+func waitBackupBucketToAvailable(ctx context.Context, onmetalClient client.Client, bucket *storagev1alpha1.Bucket) error {
 	backoff := wait.Backoff{
 		Duration: waitBucketInitDelay,
 		Factor:   waitBucketFactor,
@@ -68,7 +68,7 @@ func waitBackupBucketToAvailable(ctx context.Context, ironcoreClient client.Clie
 	}
 
 	err := wait.ExponentialBackoffWithContext(ctx, backoff, func(ctx context.Context) (bool, error) {
-		err := ironcoreClient.Get(ctx, client.ObjectKey{Namespace: bucket.Namespace, Name: bucket.Name}, bucket)
+		err := onmetalClient.Get(ctx, client.ObjectKey{Namespace: bucket.Namespace, Name: bucket.Name}, bucket)
 		if err == nil && bucket.Status.State == storagev1alpha1.BucketStateAvailable && isBucketAccessDetailsAvailable(bucket) {
 			return true, nil
 		}
@@ -76,7 +76,7 @@ func waitBackupBucketToAvailable(ctx context.Context, ironcoreClient client.Clie
 	})
 
 	if wait.Interrupted(err) {
-		return fmt.Errorf("timeout waiting for the ironcore Bucket %s status: %w", client.ObjectKeyFromObject(bucket), err)
+		return fmt.Errorf("timeout waiting for the onmetal Bucket %s status: %w", client.ObjectKeyFromObject(bucket), err)
 	}
 
 	return err
@@ -92,20 +92,20 @@ func (a *actuator) patchBackupBucketStatus(ctx context.Context, backupBucket *ex
 		return fmt.Errorf("secret does not contain any data")
 	}
 
-	accessKeyID, ok := secretData[ironcore.BucketAccessKeyID]
+	accessKeyID, ok := secretData[onmetal.BucketAccessKeyID]
 	if !ok {
-		return fmt.Errorf("missing %q field in secret", ironcore.BucketAccessKeyID)
+		return fmt.Errorf("missing %q field in secret", onmetal.BucketAccessKeyID)
 	}
 
-	secretAccessKey, ok := secretData[ironcore.BucketSecretAccessKey]
+	secretAccessKey, ok := secretData[onmetal.BucketSecretAccessKey]
 	if !ok {
-		return fmt.Errorf("missing %q field in secret", ironcore.BucketSecretAccessKey)
+		return fmt.Errorf("missing %q field in secret", onmetal.BucketSecretAccessKey)
 	}
 
 	accessSecretData := map[string][]byte{}
-	accessSecretData[ironcore.AccessKeyID] = []byte(accessKeyID)
-	accessSecretData[ironcore.SecretAccessKey] = []byte(secretAccessKey)
-	accessSecretData[ironcore.Endpoint] = []byte(endpoint)
+	accessSecretData[onmetal.AccessKeyID] = []byte(accessKeyID)
+	accessSecretData[onmetal.SecretAccessKey] = []byte(secretAccessKey)
+	accessSecretData[onmetal.Endpoint] = []byte(endpoint)
 
 	patch := client.MergeFrom(backupBucket.DeepCopy())
 

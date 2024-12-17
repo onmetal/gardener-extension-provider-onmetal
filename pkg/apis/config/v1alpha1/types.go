@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package v1alpha1
@@ -13,7 +13,7 @@ import (
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// ControllerConfiguration defines the configuration for the ironcore provider.
+// ControllerConfiguration defines the configuration for the onmetal provider.
 type ControllerConfiguration struct {
 	metav1.TypeMeta `json:",inline"`
 
@@ -67,14 +67,14 @@ type ETCDBackup struct {
 type BastionConfig struct {
 	// Image is the URL pointing to an OCI registry containing the operating system image which should be used to boot the Bastion host
 	Image string `json:"image,omitempty"`
-	// MachineClassName is the name of the ironcore MachineClass to use for the Bastion host
+	// MachineClassName is the name of the onmetal MachineClass to use for the Bastion host
 	MachineClassName string `json:"machineClassName,omitempty"`
-	// VolumeClassName is the name of the ironcore VolumeClass to use for the Bastion host root disk volume
+	// VolumeClassName is the name of the onmetal VolumeClass to use for the Bastion host root disk volume
 	VolumeClassName string `json:"volumeClassName,omitempty"`
 }
 
 // BackupBucketConfig is config for Backup Bucket
 type BackupBucketConfig struct {
-	// BucketClassName is the name of the ironcore BucketClass to use for the BackupBucket
+	// BucketClassName is the name of the onmetal BucketClass to use for the BackupBucket
 	BucketClassName string `json:"bucketClassName,omitempty"`
 }

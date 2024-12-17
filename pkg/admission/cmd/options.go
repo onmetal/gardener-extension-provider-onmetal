@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package cmd
@@ -6,7 +6,7 @@ package cmd
 import (
 	webhookcmd "github.com/gardener/gardener/extensions/pkg/webhook/cmd"
 
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/admission/validator"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/admission/validator"
 )
 
 // GardenWebhookSwitchOptions are the webhookcmd.SwitchOptions for the admission webhooks.

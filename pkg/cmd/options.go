@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package cmd
@@ -17,15 +17,15 @@ import (
 	webhookcmd "github.com/gardener/gardener/extensions/pkg/webhook/cmd"
 	extensioncontrolplanewebhook "github.com/gardener/gardener/extensions/pkg/webhook/controlplane"
 
-	backupbucketcontroller "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/controller/backupbucket"
-	backupentrycontroller "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/controller/backupentry"
-	bastioncontroller "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/controller/bastion"
-	controlplanecontroller "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/controller/controlplane"
-	healthcheckcontroller "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/controller/healthcheck"
-	infrastructurecontroller "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/controller/infrastructure"
-	workercontroller "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/controller/worker"
-	cloudproviderwebhook "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/webhook/cloudprovider"
-	controlplanewebhook "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/webhook/controlplane"
+	backupbucketcontroller "github.com/onmetal/gardener-extension-provider-onmetal/pkg/controller/backupbucket"
+	backupentrycontroller "github.com/onmetal/gardener-extension-provider-onmetal/pkg/controller/backupentry"
+	bastioncontroller "github.com/onmetal/gardener-extension-provider-onmetal/pkg/controller/bastion"
+	controlplanecontroller "github.com/onmetal/gardener-extension-provider-onmetal/pkg/controller/controlplane"
+	healthcheckcontroller "github.com/onmetal/gardener-extension-provider-onmetal/pkg/controller/healthcheck"
+	infrastructurecontroller "github.com/onmetal/gardener-extension-provider-onmetal/pkg/controller/infrastructure"
+	workercontroller "github.com/onmetal/gardener-extension-provider-onmetal/pkg/controller/worker"
+	cloudproviderwebhook "github.com/onmetal/gardener-extension-provider-onmetal/pkg/webhook/cloudprovider"
+	controlplanewebhook "github.com/onmetal/gardener-extension-provider-onmetal/pkg/webhook/controlplane"
 )
 
 // ControllerSwitchOptions are the controllercmd.SwitchOptions for the provider controllers.

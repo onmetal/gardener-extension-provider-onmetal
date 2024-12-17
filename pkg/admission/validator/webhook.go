@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package validator
@@ -12,7 +12,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/manager"
 
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/ironcore"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/onmetal"
 )
 
 const (
@@ -22,14 +22,14 @@ const (
 	SecretsValidatorName = "secrets." + Name
 )
 
-var logger = log.Log.WithName("ironcore-validator-webhook")
+var logger = log.Log.WithName("onmetal-validator-webhook")
 
 // New creates a new validation webhook for `core.gardener.cloud` resources.
 func New(mgr manager.Manager) (*extensionswebhook.Webhook, error) {
 	logger.Info("Setting up webhook", "name", Name)
 
 	return extensionswebhook.New(mgr, extensionswebhook.Args{
-		Provider: ironcore.Type,
+		Provider: onmetal.Type,
 		Name:     Name,
 		Path:     "/webhooks/validate",
 		Validators: map[extensionswebhook.Validator][]extensionswebhook.Type{
@@ -38,7 +38,7 @@ func New(mgr manager.Manager) (*extensionswebhook.Webhook, error) {
 		},
 		Target: extensionswebhook.TargetSeed,
 		ObjectSelector: &metav1.LabelSelector{
-			MatchLabels: map[string]string{constants.LabelExtensionProviderTypePrefix + ironcore.Type: "true"},
+			MatchLabels: map[string]string{constants.LabelExtensionProviderTypePrefix + onmetal.Type: "true"},
 		},
 	})
 }
@@ -48,7 +48,7 @@ func NewSecretsWebhook(mgr manager.Manager) (*extensionswebhook.Webhook, error) 
 	logger.Info("Setting up webhook", "name", SecretsValidatorName)
 
 	return extensionswebhook.New(mgr, extensionswebhook.Args{
-		Provider: ironcore.Type,
+		Provider: onmetal.Type,
 		Name:     SecretsValidatorName,
 		Path:     "/webhooks/validate/secrets",
 		Validators: map[extensionswebhook.Validator][]extensionswebhook.Type{

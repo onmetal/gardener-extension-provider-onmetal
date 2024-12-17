@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package config
@@ -9,7 +9,7 @@ import (
 )
 
 // GroupName is the group name use in this package
-const GroupName = "ironcore.provider.extensions.config.gardener.cloud"
+const GroupName = "onmetal.provider.extensions.config.gardener.cloud"
 
 // SchemeGroupVersion is group version used to register these objects
 var SchemeGroupVersion = schema.GroupVersion{Group: GroupName, Version: runtime.APIVersionInternal}

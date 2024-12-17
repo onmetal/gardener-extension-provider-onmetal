@@ -61,7 +61,7 @@ echo "${bold}Public types${normal}"
 echo "Generating ${blue}deepcopy${normal}"
 "$DEEPCOPY_GEN" \
   --go-header-file "$BASE_DIR/boilerplate.go.txt" \
-  --input-dirs "$(qualify-gvs "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis" "config:v1alpha1 ironcore:v1alpha1")" \
+  --input-dirs "$(qualify-gvs "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis" "config:v1alpha1 onmetal:v1alpha1")" \
   -O zz_generated.deepcopy
 
 echo "${bold}Internal types${normal}"
@@ -69,18 +69,18 @@ echo "${bold}Internal types${normal}"
 echo "Generating ${blue}deepcopy${normal}"
 "$DEEPCOPY_GEN" \
   --go-header-file "$BASE_DIR/boilerplate.go.txt" \
-  --input-dirs "$(qualify-gs "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis" "config ironcore")" \
+  --input-dirs "$(qualify-gs "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis" "config onmetal")" \
   -O zz_generated.deepcopy
 
 echo "Generating ${blue}defaulter${normal}"
 "$DEFAULTER_GEN" \
   --go-header-file "$BASE_DIR/boilerplate.go.txt" \
-  --input-dirs "$(qualify-gvs "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis" "config:v1alpha1 ironcore:v1alpha1")" \
+  --input-dirs "$(qualify-gvs "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis" "config:v1alpha1 onmetal:v1alpha1")" \
   -O zz_generated.defaults
 
 echo "Generating ${blue}conversion${normal}"
 "$CONVERSION_GEN" \
   --go-header-file "$BASE_DIR/boilerplate.go.txt" \
-  --input-dirs "$(qualify-gs "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis" "config ironcore")" \
-  --input-dirs "$(qualify-gvs "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis" "config:v1alpha1 ironcore:v1alpha1")" \
+  --input-dirs "$(qualify-gs "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis" "config onmetal")" \
+  --input-dirs "$(qualify-gvs "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis" "config:v1alpha1 onmetal:v1alpha1")" \
   -O zz_generated.conversion

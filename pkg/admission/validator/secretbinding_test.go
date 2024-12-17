@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package validator_test
@@ -17,7 +17,7 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/admission/validator"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/admission/validator"
 )
 
 var _ = Describe("SecretBinding validator", func() {

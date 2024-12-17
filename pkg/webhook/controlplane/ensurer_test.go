@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package controlplane
@@ -242,7 +242,7 @@ var _ = Describe("Ensurer", func() {
 			BeforeEach(func() {
 				ensurer = NewEnsurer(logger, true)
 				DeferCleanup(testutils.WithVar(&ImageVector, imagevectorutils.ImageVector{{
-					Name:       "machine-controller-manager-provider-ironcore",
+					Name:       "machine-controller-manager-provider-onmetal",
 					Repository: ptr.To("foo"),
 					Tag:        ptr.To[string]("bar"),
 				}}))
@@ -252,7 +252,7 @@ var _ = Describe("Ensurer", func() {
 				Expect(deployment.Spec.Template.Spec.Containers).To(BeEmpty())
 				Expect(ensurer.EnsureMachineControllerManagerDeployment(ctx, nil, deployment, nil)).To(Succeed())
 				Expect(deployment.Spec.Template.Spec.Containers).To(ConsistOf(corev1.Container{
-					Name:            "machine-controller-manager-provider-ironcore",
+					Name:            "machine-controller-manager-provider-onmetal",
 					Image:           "foo:bar",
 					ImagePullPolicy: corev1.PullIfNotPresent,
 					Args: []string{
@@ -267,7 +267,7 @@ var _ = Describe("Ensurer", func() {
 						"--port=" + strconv.Itoa(portProviderMetrics),
 						"--target-kubeconfig=" + gardenerutils.PathGenericKubeconfig,
 						"--v=3",
-						"--ironcore-kubeconfig=/etc/ironcore/kubeconfig",
+						"--onmetal-kubeconfig=/etc/onmetal/kubeconfig",
 					},
 					LivenessProbe: &corev1.Probe{
 						ProbeHandler: corev1.ProbeHandler{
@@ -295,7 +295,7 @@ var _ = Describe("Ensurer", func() {
 					},
 						{
 							Name:      "cloudprovider",
-							MountPath: "/etc/ironcore",
+							MountPath: "/etc/onmetal",
 							ReadOnly:  true,
 						},
 					},
@@ -333,7 +333,7 @@ var _ = Describe("Ensurer", func() {
 
 				ccv := vpaautoscalingv1.ContainerControlledValuesRequestsOnly
 				Expect(vpa.Spec.ResourcePolicy.ContainerPolicies).To(ConsistOf(vpaautoscalingv1.ContainerResourcePolicy{
-					ContainerName:    "machine-controller-manager-provider-ironcore",
+					ContainerName:    "machine-controller-manager-provider-onmetal",
 					ControlledValues: &ccv,
 					MinAllowed: corev1.ResourceList{
 						corev1.ResourceCPU:    resource.MustParse("30m"),

@@ -1,22 +1,22 @@
 <p>Packages:</p>
 <ul>
 <li>
-<a href="#ironcore.provider.extensions.gardener.cloud%2fv1alpha1">ironcore.provider.extensions.gardener.cloud/v1alpha1</a>
+<a href="#onmetal.provider.extensions.gardener.cloud%2fv1alpha1">onmetal.provider.extensions.gardener.cloud/v1alpha1</a>
 </li>
 </ul>
-<h2 id="ironcore.provider.extensions.gardener.cloud/v1alpha1">ironcore.provider.extensions.gardener.cloud/v1alpha1</h2>
+<h2 id="onmetal.provider.extensions.gardener.cloud/v1alpha1">onmetal.provider.extensions.gardener.cloud/v1alpha1</h2>
 <p>
-<p>Package v1alpha1 contains the ironcore provider API resources.</p>
+<p>Package v1alpha1 contains the onmetal provider API resources.</p>
 </p>
 Resource Types:
 <ul><li>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.CloudProfileConfig">CloudProfileConfig</a>
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.CloudProfileConfig">CloudProfileConfig</a>
 </li><li>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.ControlPlaneConfig">ControlPlaneConfig</a>
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.ControlPlaneConfig">ControlPlaneConfig</a>
 </li><li>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.InfrastructureConfig">InfrastructureConfig</a>
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.InfrastructureConfig">InfrastructureConfig</a>
 </li></ul>
-<h3 id="ironcore.provider.extensions.gardener.cloud/v1alpha1.CloudProfileConfig">CloudProfileConfig
+<h3 id="onmetal.provider.extensions.gardener.cloud/v1alpha1.CloudProfileConfig">CloudProfileConfig
 </h3>
 <p>
 <p>CloudProfileConfig contains provider-specific configuration that is embedded into Gardener&rsquo;s <code>CloudProfile</code>
@@ -36,7 +36,7 @@ resource.</p>
 string</td>
 <td>
 <code>
-ironcore.provider.extensions.gardener.cloud/v1alpha1
+onmetal.provider.extensions.gardener.cloud/v1alpha1
 </code>
 </td>
 </tr>
@@ -51,7 +51,7 @@ string
 <td>
 <code>machineImages</code></br>
 <em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.MachineImages">
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.MachineImages">
 []MachineImages
 </a>
 </em>
@@ -65,7 +65,7 @@ logical names and versions to provider-specific identifiers.</p>
 <td>
 <code>regionConfigs</code></br>
 <em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.RegionConfig">
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.RegionConfig">
 []RegionConfig
 </a>
 </em>
@@ -78,7 +78,7 @@ logical names and versions to provider-specific identifiers.</p>
 <td>
 <code>storageClasses</code></br>
 <em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.StorageClasses">
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.StorageClasses">
 StorageClasses
 </a>
 </em>
@@ -90,7 +90,7 @@ StorageClasses
 </tr>
 </tbody>
 </table>
-<h3 id="ironcore.provider.extensions.gardener.cloud/v1alpha1.ControlPlaneConfig">ControlPlaneConfig
+<h3 id="onmetal.provider.extensions.gardener.cloud/v1alpha1.ControlPlaneConfig">ControlPlaneConfig
 </h3>
 <p>
 <p>ControlPlaneConfig contains configuration settings for the control plane.</p>
@@ -109,7 +109,7 @@ StorageClasses
 string</td>
 <td>
 <code>
-ironcore.provider.extensions.gardener.cloud/v1alpha1
+onmetal.provider.extensions.gardener.cloud/v1alpha1
 </code>
 </td>
 </tr>
@@ -124,7 +124,7 @@ string
 <td>
 <code>cloudControllerManager</code></br>
 <em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.CloudControllerManagerConfig">
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.CloudControllerManagerConfig">
 CloudControllerManagerConfig
 </a>
 </em>
@@ -136,7 +136,7 @@ CloudControllerManagerConfig
 </tr>
 </tbody>
 </table>
-<h3 id="ironcore.provider.extensions.gardener.cloud/v1alpha1.InfrastructureConfig">InfrastructureConfig
+<h3 id="onmetal.provider.extensions.gardener.cloud/v1alpha1.InfrastructureConfig">InfrastructureConfig
 </h3>
 <p>
 <p>InfrastructureConfig infrastructure configuration resource</p>
@@ -155,7 +155,7 @@ CloudControllerManagerConfig
 string</td>
 <td>
 <code>
-ironcore.provider.extensions.gardener.cloud/v1alpha1
+onmetal.provider.extensions.gardener.cloud/v1alpha1
 </code>
 </td>
 </tr>
@@ -193,11 +193,11 @@ Has to be a power of 2. If empty, 2048 is the default.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="ironcore.provider.extensions.gardener.cloud/v1alpha1.CloudControllerManagerConfig">CloudControllerManagerConfig
+<h3 id="onmetal.provider.extensions.gardener.cloud/v1alpha1.CloudControllerManagerConfig">CloudControllerManagerConfig
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.ControlPlaneConfig">ControlPlaneConfig</a>)
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.ControlPlaneConfig">ControlPlaneConfig</a>)
 </p>
 <p>
 <p>CloudControllerManagerConfig contains configuration settings for the cloud-controller-manager.</p>
@@ -224,7 +224,7 @@ map[string]bool
 </tr>
 </tbody>
 </table>
-<h3 id="ironcore.provider.extensions.gardener.cloud/v1alpha1.InfrastructureStatus">InfrastructureStatus
+<h3 id="onmetal.provider.extensions.gardener.cloud/v1alpha1.InfrastructureStatus">InfrastructureStatus
 </h3>
 <p>
 <p>InfrastructureStatus contains information about created infrastructure resources.</p>
@@ -241,8 +241,8 @@ map[string]bool
 <td>
 <code>networkRef</code></br>
 <em>
-<a href="https://github.com/ironcore-dev/ironcore/blob/main/docs/api-reference/common.md#localuidreference">
-github.com/ironcore-dev/ironcore/api/common/v1alpha1.LocalUIDReference
+<a href="https://github.com/onmetal/onmetal-api/blob/main/docs/api-reference/common.md#localuidreference">
+github.com/onmetal/onmetal-api/api/common/v1alpha1.LocalUIDReference
 </a>
 </em>
 </td>
@@ -254,8 +254,8 @@ github.com/ironcore-dev/ironcore/api/common/v1alpha1.LocalUIDReference
 <td>
 <code>natGatewayRef</code></br>
 <em>
-<a href="https://github.com/ironcore-dev/ironcore/blob/main/docs/api-reference/common.md#localuidreference">
-github.com/ironcore-dev/ironcore/api/common/v1alpha1.LocalUIDReference
+<a href="https://github.com/onmetal/onmetal-api/blob/main/docs/api-reference/common.md#localuidreference">
+github.com/onmetal/onmetal-api/api/common/v1alpha1.LocalUIDReference
 </a>
 </em>
 </td>
@@ -267,8 +267,8 @@ github.com/ironcore-dev/ironcore/api/common/v1alpha1.LocalUIDReference
 <td>
 <code>prefixRef</code></br>
 <em>
-<a href="https://github.com/ironcore-dev/ironcore/blob/main/docs/api-reference/common.md#localuidreference">
-github.com/ironcore-dev/ironcore/api/common/v1alpha1.LocalUIDReference
+<a href="https://github.com/onmetal/onmetal-api/blob/main/docs/api-reference/common.md#localuidreference">
+github.com/onmetal/onmetal-api/api/common/v1alpha1.LocalUIDReference
 </a>
 </em>
 </td>
@@ -278,14 +278,14 @@ github.com/ironcore-dev/ironcore/api/common/v1alpha1.LocalUIDReference
 </tr>
 </tbody>
 </table>
-<h3 id="ironcore.provider.extensions.gardener.cloud/v1alpha1.MachineImage">MachineImage
+<h3 id="onmetal.provider.extensions.gardener.cloud/v1alpha1.MachineImage">MachineImage
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.WorkerStatus">WorkerStatus</a>)
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.WorkerStatus">WorkerStatus</a>)
 </p>
 <p>
-<p>MachineImage is a mapping from logical names and versions to ironcore-specific identifiers.</p>
+<p>MachineImage is a mapping from logical names and versions to onmetal-specific identifiers.</p>
 </p>
 <table>
 <thead>
@@ -342,11 +342,11 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="ironcore.provider.extensions.gardener.cloud/v1alpha1.MachineImageVersion">MachineImageVersion
+<h3 id="onmetal.provider.extensions.gardener.cloud/v1alpha1.MachineImageVersion">MachineImageVersion
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.MachineImages">MachineImages</a>)
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.MachineImages">MachineImages</a>)
 </p>
 <p>
 <p>MachineImageVersion contains a version and a provider-specific identifier.</p>
@@ -395,11 +395,11 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="ironcore.provider.extensions.gardener.cloud/v1alpha1.MachineImages">MachineImages
+<h3 id="onmetal.provider.extensions.gardener.cloud/v1alpha1.MachineImages">MachineImages
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.CloudProfileConfig">CloudProfileConfig</a>)
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.CloudProfileConfig">CloudProfileConfig</a>)
 </p>
 <p>
 <p>MachineImages is a mapping from logical names and versions to provider-specific identifiers.</p>
@@ -427,7 +427,7 @@ string
 <td>
 <code>versions</code></br>
 <em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.MachineImageVersion">
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.MachineImageVersion">
 []MachineImageVersion
 </a>
 </em>
@@ -438,11 +438,11 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="ironcore.provider.extensions.gardener.cloud/v1alpha1.RegionConfig">RegionConfig
+<h3 id="onmetal.provider.extensions.gardener.cloud/v1alpha1.RegionConfig">RegionConfig
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.CloudProfileConfig">CloudProfileConfig</a>)
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.CloudProfileConfig">CloudProfileConfig</a>)
 </p>
 <p>
 <p>RegionConfig is the definition of a region.</p>
@@ -490,11 +490,11 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="ironcore.provider.extensions.gardener.cloud/v1alpha1.StorageClass">StorageClass
+<h3 id="onmetal.provider.extensions.gardener.cloud/v1alpha1.StorageClass">StorageClass
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.StorageClasses">StorageClasses</a>)
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.StorageClasses">StorageClasses</a>)
 </p>
 <p>
 <p>StorageClass is a definition of a storageClass</p>
@@ -531,11 +531,11 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="ironcore.provider.extensions.gardener.cloud/v1alpha1.StorageClasses">StorageClasses
+<h3 id="onmetal.provider.extensions.gardener.cloud/v1alpha1.StorageClasses">StorageClasses
 </h3>
 <p>
 (<em>Appears on:</em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.CloudProfileConfig">CloudProfileConfig</a>)
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.CloudProfileConfig">CloudProfileConfig</a>)
 </p>
 <p>
 <p>StorageClasses is a definition of a storageClasses</p>
@@ -552,7 +552,7 @@ string
 <td>
 <code>default</code></br>
 <em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.StorageClass">
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.StorageClass">
 StorageClass
 </a>
 </em>
@@ -566,7 +566,7 @@ StorageClass
 <td>
 <code>additional</code></br>
 <em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.StorageClass">
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.StorageClass">
 []StorageClass
 </a>
 </em>
@@ -578,7 +578,7 @@ StorageClass
 </tr>
 </tbody>
 </table>
-<h3 id="ironcore.provider.extensions.gardener.cloud/v1alpha1.WorkerStatus">WorkerStatus
+<h3 id="onmetal.provider.extensions.gardener.cloud/v1alpha1.WorkerStatus">WorkerStatus
 </h3>
 <p>
 <p>WorkerStatus contains information about created worker resources.</p>
@@ -595,7 +595,7 @@ StorageClass
 <td>
 <code>machineImages</code></br>
 <em>
-<a href="#ironcore.provider.extensions.gardener.cloud/v1alpha1.MachineImage">
+<a href="#onmetal.provider.extensions.gardener.cloud/v1alpha1.MachineImage">
 []MachineImage
 </a>
 </em>

@@ -12,7 +12,7 @@ spec:
     updateMode: Auto
   resourcePolicy:
     containerPolicies:
-      - containerName: ironcore-cloud-controller-manager
+      - containerName: onmetal-cloud-controller-manager
         minAllowed:
           memory: 40M
         maxAllowed:

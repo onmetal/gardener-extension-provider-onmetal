@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package infrastructure
@@ -12,9 +12,9 @@ import (
 	"github.com/gardener/gardener/extensions/pkg/controller"
 	extensionsv1alpha1 "github.com/gardener/gardener/pkg/apis/extensions/v1alpha1"
 	"github.com/go-logr/logr"
-	"github.com/ironcore-dev/ironcore/api/common/v1alpha1"
-	ipamv1alpha1 "github.com/ironcore-dev/ironcore/api/ipam/v1alpha1"
-	networkingv1alpha1 "github.com/ironcore-dev/ironcore/api/networking/v1alpha1"
+	"github.com/onmetal/onmetal-api/api/common/v1alpha1"
+	ipamv1alpha1 "github.com/onmetal/onmetal-api/api/ipam/v1alpha1"
+	networkingv1alpha1 "github.com/onmetal/onmetal-api/api/networking/v1alpha1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -22,10 +22,10 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 
-	api "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/ironcore"
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/ironcore/helper"
-	apiv1alpha1 "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/ironcore/v1alpha1"
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/ironcore"
+	api "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal/helper"
+	apiv1alpha1 "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal/v1alpha1"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/onmetal"
 )
 
 const (
@@ -45,23 +45,23 @@ func (a *actuator) reconcile(ctx context.Context, log logr.Logger, infra *extens
 		return err
 	}
 
-	// get ironcore credentials from infrastructure config
-	ironcoreClient, namespace, err := ironcore.GetIroncoreClientAndNamespaceFromCloudProviderSecret(ctx, a.client, cluster.ObjectMeta.Name)
+	// get onmetal credentials from infrastructure config
+	onmetalClient, namespace, err := onmetal.GetOnmetalClientAndNamespaceFromCloudProviderSecret(ctx, a.client, cluster.ObjectMeta.Name)
 	if err != nil {
-		return fmt.Errorf("failed to get ironcore client and namespace from cloudprovider secret: %w", err)
+		return fmt.Errorf("failed to get onmetal client and namespace from cloudprovider secret: %w", err)
 	}
 
-	network, err := a.applyNetwork(ctx, ironcoreClient, namespace, config, cluster)
-	if err != nil {
-		return err
-	}
-
-	natGateway, err := a.applyNATGateway(ctx, config, ironcoreClient, namespace, cluster, network)
+	network, err := a.applyNetwork(ctx, onmetalClient, namespace, config, cluster)
 	if err != nil {
 		return err
 	}
 
-	prefix, err := a.applyPrefix(ctx, ironcoreClient, namespace, cluster)
+	natGateway, err := a.applyNATGateway(ctx, config, onmetalClient, namespace, cluster, network)
+	if err != nil {
+		return err
+	}
+
+	prefix, err := a.applyPrefix(ctx, onmetalClient, namespace, cluster)
 	if err != nil {
 		return err
 	}
@@ -72,11 +72,11 @@ func (a *actuator) reconcile(ctx context.Context, log logr.Logger, infra *extens
 	return a.updateProviderStatus(ctx, infra, network, natGateway, prefix)
 }
 
-func (a *actuator) applyPrefix(ctx context.Context, ironcoreClient client.Client, namespace string, cluster *controller.Cluster) (*ipamv1alpha1.Prefix, error) {
+func (a *actuator) applyPrefix(ctx context.Context, onmetalClient client.Client, namespace string, cluster *controller.Cluster) (*ipamv1alpha1.Prefix, error) {
 	prefix := &ipamv1alpha1.Prefix{
 		TypeMeta: metav1.TypeMeta{
 			Kind:       "Prefix",
-			APIVersion: "ipam.ironcore.dev/v1alpha1",
+			APIVersion: "ipam.api.onmetal.de/v1alpha1",
 		},
 		ObjectMeta: metav1.ObjectMeta{
 			Namespace: namespace,
@@ -92,19 +92,19 @@ func (a *actuator) applyPrefix(ctx context.Context, ironcoreClient client.Client
 		prefix.Spec.Prefix = v1alpha1.MustParseNewIPPrefix(ptr.Deref[string](nodeCIDR, ""))
 	}
 
-	if _, err := controllerutil.CreateOrPatch(ctx, ironcoreClient, prefix, nil); err != nil {
+	if _, err := controllerutil.CreateOrPatch(ctx, onmetalClient, prefix, nil); err != nil {
 		return nil, fmt.Errorf("failed to apply prefix %s: %w", client.ObjectKeyFromObject(prefix), err)
 	}
 
 	return prefix, nil
 }
 
-func (a *actuator) applyNATGateway(ctx context.Context, config *api.InfrastructureConfig, ironcoreClient client.Client, namespace string, cluster *controller.Cluster, network *networkingv1alpha1.Network) (*networkingv1alpha1.NATGateway, error) {
+func (a *actuator) applyNATGateway(ctx context.Context, config *api.InfrastructureConfig, onmetalClient client.Client, namespace string, cluster *controller.Cluster, network *networkingv1alpha1.Network) (*networkingv1alpha1.NATGateway, error) {
 
 	natGateway := &networkingv1alpha1.NATGateway{
 		TypeMeta: metav1.TypeMeta{
 			Kind:       "NATGateway",
-			APIVersion: "networking.ironcore.dev/v1alpha1",
+			APIVersion: "networking.api.onmetal.de/v1alpha1",
 		},
 		ObjectMeta: metav1.ObjectMeta{
 			Namespace: namespace,
@@ -132,7 +132,7 @@ func (a *actuator) applyNATGateway(ctx context.Context, config *api.Infrastructu
 			// see reference https://github.com/cilium/cilium/blob/main/pkg/ip/ip.go#L27
 			subnet, size := ipv4Net.Mask.Size()
 			amount := big.NewInt(0).Sub(big.NewInt(2).Exp(big.NewInt(2), big.NewInt(int64(size-subnet)), nil), big.NewInt(0))
-			maxPorts := big.NewInt(int64(ironcore.MaxAvailableNATPortsPerNetworkInterface))
+			maxPorts := big.NewInt(int64(onmetal.MaxAvailableNATPortsPerNetworkInterface))
 			ports := big.NewInt(0).Div(maxPorts, amount)
 
 			if ports.Int64() < int64(*portsPerNetworkInterface) {
@@ -143,7 +143,7 @@ func (a *actuator) applyNATGateway(ctx context.Context, config *api.Infrastructu
 		}
 	}
 
-	if _, err := controllerutil.CreateOrPatch(ctx, ironcoreClient, natGateway, nil); err != nil {
+	if _, err := controllerutil.CreateOrPatch(ctx, onmetalClient, natGateway, nil); err != nil {
 		return nil, fmt.Errorf("failed to apply natgateway %s: %w", client.ObjectKeyFromObject(natGateway), err)
 	}
 	return natGateway, nil
@@ -158,11 +158,11 @@ func previousPowOf2(n int32) int32 {
 	return n - (n >> 1)
 }
 
-func (a *actuator) applyNetwork(ctx context.Context, ironcoreClient client.Client, namespace string, config *api.InfrastructureConfig, cluster *controller.Cluster) (*networkingv1alpha1.Network, error) {
+func (a *actuator) applyNetwork(ctx context.Context, onmetalClient client.Client, namespace string, config *api.InfrastructureConfig, cluster *controller.Cluster) (*networkingv1alpha1.Network, error) {
 	if config != nil && config.NetworkRef != nil {
 		network := &networkingv1alpha1.Network{}
 		networkKey := client.ObjectKey{Namespace: namespace, Name: config.NetworkRef.Name}
-		if err := ironcoreClient.Get(ctx, networkKey, network); err != nil {
+		if err := onmetalClient.Get(ctx, networkKey, network); err != nil {
 			return nil, fmt.Errorf("failed to get network %s: %w", networkKey, err)
 		}
 		return network, nil
@@ -171,7 +171,7 @@ func (a *actuator) applyNetwork(ctx context.Context, ironcoreClient client.Clien
 	network := &networkingv1alpha1.Network{
 		TypeMeta: metav1.TypeMeta{
 			Kind:       "Network",
-			APIVersion: "networking.ironcore.dev/v1alpha1",
+			APIVersion: "networking.api.onmetal.de/v1alpha1",
 		},
 		ObjectMeta: metav1.ObjectMeta{
 			Namespace: namespace,
@@ -179,7 +179,7 @@ func (a *actuator) applyNetwork(ctx context.Context, ironcoreClient client.Clien
 		},
 	}
 
-	if _, err := controllerutil.CreateOrPatch(ctx, ironcoreClient, network, nil); err != nil {
+	if _, err := controllerutil.CreateOrPatch(ctx, onmetalClient, network, nil); err != nil {
 		return nil, fmt.Errorf("failed to apply network %s: %w", client.ObjectKeyFromObject(network), err)
 	}
 	return network, nil

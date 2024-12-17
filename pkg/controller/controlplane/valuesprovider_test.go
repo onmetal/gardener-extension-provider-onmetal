@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package controlplane
@@ -12,9 +12,9 @@ import (
 	extensionsv1alpha1 "github.com/gardener/gardener/pkg/apis/extensions/v1alpha1"
 	secretsmanager "github.com/gardener/gardener/pkg/utils/secrets/manager"
 	fakesecretsmanager "github.com/gardener/gardener/pkg/utils/secrets/manager/fake"
-	"github.com/ironcore-dev/ironcore/api/common/v1alpha1"
-	corev1alpha1 "github.com/ironcore-dev/ironcore/api/core/v1alpha1"
-	storagev1alpha1 "github.com/ironcore-dev/ironcore/api/storage/v1alpha1"
+	"github.com/onmetal/onmetal-api/api/common/v1alpha1"
+	corev1alpha1 "github.com/onmetal/onmetal-api/api/core/v1alpha1"
+	storagev1alpha1 "github.com/onmetal/onmetal-api/api/storage/v1alpha1"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 	corev1 "k8s.io/api/core/v1"
@@ -29,9 +29,9 @@ import (
 	fakeclient "sigs.k8s.io/controller-runtime/pkg/client/fake"
 	. "sigs.k8s.io/controller-runtime/pkg/envtest/komega"
 
-	apisironcore "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/ironcore"
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/internal"
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/ironcore"
+	apisonmetal "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/internal"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/onmetal"
 )
 
 var _ = Describe("Valueprovider Reconcile", func() {
@@ -67,10 +67,10 @@ var _ = Describe("Valueprovider Reconcile", func() {
 						Namespace: ns.Name,
 					},
 					DefaultSpec: extensionsv1alpha1.DefaultSpec{
-						Type: ironcore.Type,
+						Type: onmetal.Type,
 						ProviderConfig: &runtime.RawExtension{
-							Raw: encode(&apisironcore.ControlPlaneConfig{
-								CloudControllerManager: &apisironcore.CloudControllerManagerConfig{
+							Raw: encode(&apisonmetal.ControlPlaneConfig{
+								CloudControllerManager: &apisonmetal.CloudControllerManagerConfig{
 									FeatureGates: map[string]bool{
 										"CustomResourceValidation": true,
 									},
@@ -79,7 +79,7 @@ var _ = Describe("Valueprovider Reconcile", func() {
 						},
 					},
 					InfrastructureProviderStatus: &runtime.RawExtension{
-						Raw: encode(&apisironcore.InfrastructureStatus{
+						Raw: encode(&apisonmetal.InfrastructureStatus{
 							NetworkRef: v1alpha1.LocalUIDReference{
 								Name: "my-network",
 								UID:  "1234",
@@ -142,7 +142,7 @@ var _ = Describe("Valueprovider Reconcile", func() {
 			DeferCleanup(k8sClient.Delete, volumeClassStatic)
 		})
 		It("should return an empty config chart value map if not storageclasses are present in the cloudprofile", func(ctx SpecContext) {
-			providerCloudProfile := &apisironcore.CloudProfileConfig{}
+			providerCloudProfile := &apisonmetal.CloudProfileConfig{}
 			providerCloudProfileJson, err := json.Marshal(providerCloudProfile)
 			Expect(err).NotTo(HaveOccurred())
 
@@ -167,13 +167,13 @@ var _ = Describe("Valueprovider Reconcile", func() {
 		})
 
 		It("should return correct config chart values if default and additional storage classes are present in the cloudprofile", func(ctx SpecContext) {
-			providerCloudProfile := &apisironcore.CloudProfileConfig{
-				StorageClasses: apisironcore.StorageClasses{
-					Default: &apisironcore.StorageClass{
+			providerCloudProfile := &apisonmetal.CloudProfileConfig{
+				StorageClasses: apisonmetal.StorageClasses{
+					Default: &apisonmetal.StorageClass{
 						Name: "foo",
 						Type: "volume-expandable",
 					},
-					Additional: []apisironcore.StorageClass{
+					Additional: []apisonmetal.StorageClass{
 						{
 							Name: "foo1",
 							Type: "volume-expandable",
@@ -226,9 +226,9 @@ var _ = Describe("Valueprovider Reconcile", func() {
 		})
 
 		It("should return correct config chart values if only additional storage classes are present in the cloudprofile", func(ctx SpecContext) {
-			providerCloudProfile := &apisironcore.CloudProfileConfig{
-				StorageClasses: apisironcore.StorageClasses{
-					Additional: []apisironcore.StorageClass{
+			providerCloudProfile := &apisonmetal.CloudProfileConfig{
+				StorageClasses: apisonmetal.StorageClasses{
+					Additional: []apisonmetal.StorageClass{
 						{
 							Name: "foo1",
 							Type: "volume-expandable",
@@ -275,9 +275,9 @@ var _ = Describe("Valueprovider Reconcile", func() {
 		})
 
 		It("should return error if volumeClass is not available", func(ctx SpecContext) {
-			providerCloudProfile := &apisironcore.CloudProfileConfig{
-				StorageClasses: apisironcore.StorageClasses{
-					Default: &apisironcore.StorageClass{
+			providerCloudProfile := &apisonmetal.CloudProfileConfig{
+				StorageClasses: apisonmetal.StorageClasses{
+					Default: &apisonmetal.StorageClass{
 						Name: "foo",
 						Type: "volume-non-existing",
 					},
@@ -315,13 +315,13 @@ var _ = Describe("Valueprovider Reconcile", func() {
 
 	Describe("#GetControlPlaneShootChartValues", func() {
 		It("should return correct config chart values", func(ctx SpecContext) {
-			providerCloudProfile := &apisironcore.CloudProfileConfig{
-				StorageClasses: apisironcore.StorageClasses{
-					Default: &apisironcore.StorageClass{
+			providerCloudProfile := &apisonmetal.CloudProfileConfig{
+				StorageClasses: apisonmetal.StorageClasses{
+					Default: &apisonmetal.StorageClass{
 						Name: "foo",
 						Type: "volume-expandable",
 					},
-					Additional: []apisironcore.StorageClass{
+					Additional: []apisonmetal.StorageClass{
 						{
 							Name: "bar",
 							Type: "volume-static",
@@ -382,10 +382,10 @@ var _ = Describe("Valueprovider Reconcile", func() {
 						Namespace: ns.Name,
 					},
 					DefaultSpec: extensionsv1alpha1.DefaultSpec{
-						Type: ironcore.Type,
+						Type: onmetal.Type,
 						ProviderConfig: &runtime.RawExtension{
-							Raw: encode(&apisironcore.ControlPlaneConfig{
-								CloudControllerManager: &apisironcore.CloudControllerManagerConfig{
+							Raw: encode(&apisonmetal.ControlPlaneConfig{
+								CloudControllerManager: &apisonmetal.CloudControllerManagerConfig{
 									FeatureGates: map[string]bool{
 										"CustomResourceValidation": true,
 									},
@@ -394,7 +394,7 @@ var _ = Describe("Valueprovider Reconcile", func() {
 						},
 					},
 					InfrastructureProviderStatus: &runtime.RawExtension{
-						Raw: encode(&apisironcore.InfrastructureStatus{
+						Raw: encode(&apisonmetal.InfrastructureStatus{
 							NetworkRef: v1alpha1.LocalUIDReference{
 								Name: "my-network",
 								UID:  "1234",
@@ -403,13 +403,13 @@ var _ = Describe("Valueprovider Reconcile", func() {
 					},
 				},
 			}
-			providerCloudProfile := &apisironcore.CloudProfileConfig{
-				StorageClasses: apisironcore.StorageClasses{
-					Default: &apisironcore.StorageClass{
+			providerCloudProfile := &apisonmetal.CloudProfileConfig{
+				StorageClasses: apisonmetal.StorageClasses{
+					Default: &apisonmetal.StorageClass{
 						Name: "foo",
 						Type: "volumeTypeFoo",
 					},
-					Additional: []apisironcore.StorageClass{
+					Additional: []apisonmetal.StorageClass{
 						{
 							Name: "bar",
 							Type: "volumeTypeBar",
@@ -457,7 +457,7 @@ var _ = Describe("Valueprovider Reconcile", func() {
 			}
 
 			checksums := map[string]string{
-				ironcore.CloudProviderConfigName: "8bafb35ff1ac60275d62e1cbd495aceb511fb354f74a20f7d06ecb48b3a68432",
+				onmetal.CloudProviderConfigName: "8bafb35ff1ac60275d62e1cbd495aceb511fb354f74a20f7d06ecb48b3a68432",
 			}
 			values, err := vp.GetControlPlaneChartValues(ctx, cp, cluster, fakeSecretsManager, checksums, false)
 			Expect(err).NotTo(HaveOccurred())

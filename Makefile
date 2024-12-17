@@ -1,9 +1,9 @@
 ENSURE_GARDENER_MOD         := $(shell go get github.com/gardener/gardener@$$(go list -m -f "{{.Version}}" github.com/gardener/gardener))
 GARDENER_HACK_DIR    		:= $(shell go list -m -f "{{.Dir}}" github.com/gardener/gardener)/hack
 EXTENSION_PREFIX            := gardener-extension
-NAME                        := provider-ironcore
+NAME                        := provider-onmetal
 REGISTRY                    := ghcr.io
-ADMISSION_NAME              := admission-ironcore
+ADMISSION_NAME              := admission-onmetal
 IMAGE_PREFIX                := $(REGISTRY)/extensions
 REPO_ROOT                   := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 HACK_DIR                    := $(REPO_ROOT)/hack
@@ -58,7 +58,7 @@ start-admission:
 		./cmd/$(EXTENSION_PREFIX)-$(ADMISSION_NAME) \
 		--webhook-config-server-host=0.0.0.0 \
 		--webhook-config-server-port=9443 \
-		--webhook-config-cert-dir=./example/admission-ironcore-certs
+		--webhook-config-cert-dir=./example/admission-onmetal-certs
 
 #################################################################
 # Rules related to binary build, Docker image build and release #
@@ -102,7 +102,7 @@ add-license: $(GO_ADD_LICENSE) ## Add license headers to all go files.
 
 .PHONY: check-license
 check-license: $(GO_ADD_LICENSE) ## Check that every file has a license header present.
-	find . -name '*.go' -exec $(GO_ADD_LICENSE) -check -c 'IronCore authors' {} +
+	find . -name '*.go' -exec $(GO_ADD_LICENSE) -check -c 'onMetal authors' {} +
 
 .PHONY: check
 check: $(GOIMPORTS) $(GOLANGCI_LINT) $(MOCKGEN)
@@ -146,7 +146,7 @@ verify-extended: check-generate check format test-cov test-clean
 
 .PHONY: docs
 docs: $(GEN_CRD_API_REFERENCE_DOCS) ## Run go generate to generate API reference documentation.
-	$(GEN_CRD_API_REFERENCE_DOCS) -api-dir ./pkg/apis/ironcore/v1alpha1 -config ./hack/api-reference/api.json -template-dir ./hack/api-reference/template -out-file ./hack/api-reference/api.md
+	$(GEN_CRD_API_REFERENCE_DOCS) -api-dir ./pkg/apis/onmetal/v1alpha1 -config ./hack/api-reference/api.json -template-dir ./hack/api-reference/template -out-file ./hack/api-reference/api.md
 	$(GEN_CRD_API_REFERENCE_DOCS) -api-dir ./pkg/apis/config/v1alpha1 -config ./hack/api-reference/config.json -template-dir ./hack/api-reference/template -out-file ./hack/api-reference/config.md
 
 .PHONY: verify

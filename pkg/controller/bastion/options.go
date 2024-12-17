@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2023 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package bastion
@@ -17,7 +17,7 @@ type Options struct {
 	UserData            []byte
 }
 
-// DetermineOptions determines the required information that are required to reconcile a Bastion on ironcore. This
+// DetermineOptions determines the required information that are required to reconcile a Bastion on onmetal. This
 // function does not create any IaaS resources.
 func DetermineOptions(bastion *extensionsv1alpha1.Bastion, cluster *controller.Cluster) (*Options, error) {
 	clusterName := cluster.ObjectMeta.Name

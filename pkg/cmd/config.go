@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package cmd
@@ -9,8 +9,8 @@ import (
 	healthcheckconfig "github.com/gardener/gardener/extensions/pkg/apis/config"
 	"github.com/spf13/pflag"
 
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/config"
-	configloader "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/config/loader"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/config"
+	configloader "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/config/loader"
 )
 
 // ConfigOptions are command line options that can be set for config.ControllerConfiguration.

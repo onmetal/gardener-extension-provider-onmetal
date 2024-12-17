@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package worker
@@ -21,11 +21,11 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 
-	ironcoreextensionv1alpha1 "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/ironcore/v1alpha1"
-	"github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/ironcore"
+	onmetalextensionv1alpha1 "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal/v1alpha1"
+	"github.com/onmetal/gardener-extension-provider-onmetal/pkg/onmetal"
 )
 
-// DeployMachineClasses generates and creates the ironcore specific machine classes.
+// DeployMachineClasses generates and creates the onmetal specific machine classes.
 func (w *workerDelegate) DeployMachineClasses(ctx context.Context) error {
 	machineClasses, machineClassSecrets, err := w.generateMachineClassAndSecrets(ctx)
 	if err != nil {
@@ -91,7 +91,7 @@ func (w *workerDelegate) generateMachineClassAndSecrets(ctx context.Context) ([]
 		machineClassSecrets []*corev1.Secret
 	)
 
-	infrastructureStatus := &ironcoreextensionv1alpha1.InfrastructureStatus{}
+	infrastructureStatus := &onmetalextensionv1alpha1.InfrastructureStatus{}
 	if _, _, err := w.decoder.Decode(w.worker.Spec.InfrastructureProviderStatus.Raw, nil, infrastructureStatus); err != nil {
 		return nil, nil, fmt.Errorf("failed to decode infra status: %w", err)
 	}
@@ -109,13 +109,13 @@ func (w *workerDelegate) generateMachineClassAndSecrets(ctx context.Context) ([]
 		}
 
 		machineClassProviderSpec := map[string]interface{}{
-			ironcore.ImageFieldName: machineImage,
+			onmetal.ImageFieldName: machineImage,
 		}
 
 		if pool.Volume != nil {
-			machineClassProviderSpec[ironcore.RootDiskFieldName] = map[string]interface{}{
-				ironcore.SizeFieldName:        pool.Volume.Size,
-				ironcore.VolumeClassFieldName: pool.Volume.Type,
+			machineClassProviderSpec[onmetal.RootDiskFieldName] = map[string]interface{}{
+				onmetal.SizeFieldName:        pool.Volume.Size,
+				onmetal.VolumeClassFieldName: pool.Volume.Type,
 			}
 		}
 
@@ -139,10 +139,10 @@ func (w *workerDelegate) generateMachineClassAndSecrets(ctx context.Context) ([]
 				}
 			}
 
-			machineClassProviderSpec[ironcore.NetworkFieldName] = infrastructureStatus.NetworkRef.Name
-			machineClassProviderSpec[ironcore.PrefixFieldName] = infrastructureStatus.PrefixRef.Name
-			machineClassProviderSpec[ironcore.LabelsFieldName] = map[string]string{
-				ironcore.ClusterNameLabel: w.cluster.ObjectMeta.Name,
+			machineClassProviderSpec[onmetal.NetworkFieldName] = infrastructureStatus.NetworkRef.Name
+			machineClassProviderSpec[onmetal.PrefixFieldName] = infrastructureStatus.PrefixRef.Name
+			machineClassProviderSpec[onmetal.LabelsFieldName] = map[string]string{
+				onmetal.ClusterNameLabel: w.cluster.ObjectMeta.Name,
 			}
 
 			machineClassProviderSpecJSON, err := json.Marshal(machineClassProviderSpec)
@@ -168,7 +168,7 @@ func (w *workerDelegate) generateMachineClassAndSecrets(ctx context.Context) ([]
 				ProviderSpec: runtime.RawExtension{
 					Raw: machineClassProviderSpecJSON,
 				},
-				Provider: ironcore.Type,
+				Provider: onmetal.Type,
 				SecretRef: &corev1.SecretReference{
 					Name:      className,
 					Namespace: w.worker.Namespace,
@@ -182,7 +182,7 @@ func (w *workerDelegate) generateMachineClassAndSecrets(ctx context.Context) ([]
 					Labels:    map[string]string{v1beta1constants.GardenerPurpose: v1beta1constants.GardenPurposeMachineClass},
 				},
 				Data: map[string][]byte{
-					ironcore.UserDataFieldName: userData,
+					onmetal.UserDataFieldName: userData,
 				},
 			}
 

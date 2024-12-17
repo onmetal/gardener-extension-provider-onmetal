@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and IronCore contributors
+// SPDX-FileCopyrightText: 2022 SAP SE or an SAP affiliate company and onMetal contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package validator
@@ -12,7 +12,7 @@ import (
 	"k8s.io/apimachinery/pkg/api/equality"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	ironcorevalidation "github.com/ironcore-dev/gardener-extension-provider-ironcore/pkg/apis/ironcore/validation"
+	onmetalvalidation "github.com/onmetal/gardener-extension-provider-onmetal/pkg/apis/onmetal/validation"
 )
 
 type secret struct{}
@@ -22,7 +22,7 @@ func NewSecretValidator() extensionswebhook.Validator {
 	return &secret{}
 }
 
-// Validate checks whether the given new secret contains a valid ironcore service account.
+// Validate checks whether the given new secret contains a valid onmetal service account.
 func (s *secret) Validate(_ context.Context, newObj, oldObj client.Object) error {
 	secret, ok := newObj.(*corev1.Secret)
 	if !ok {
@@ -40,5 +40,5 @@ func (s *secret) Validate(_ context.Context, newObj, oldObj client.Object) error
 		}
 	}
 
-	return ironcorevalidation.ValidateCloudProviderSecret(secret)
+	return onmetalvalidation.ValidateCloudProviderSecret(secret)
 }

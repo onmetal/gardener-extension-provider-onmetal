@@ -6,7 +6,7 @@ updates:
     schedule:
       interval: "weekly"
     reviewers:
-      - "ironcore-dev/integration"
+      - "onmetal/integration"
     ignore:
       - dependency-name: "k8s.io/api"
       - dependency-name: "k8s.io/apiextensions-apiserver"
@@ -24,10 +24,10 @@ updates:
     schedule:
       interval: "weekly"
     reviewers:
-      - "ironcore-dev/integration"
+      - "onmetal/integration"
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "weekly"
     reviewers:
-      - "ironcore-dev/integration"
+      - "onmetal/integration"
