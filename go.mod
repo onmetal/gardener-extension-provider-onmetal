@@ -17,7 +17,7 @@ require (
 	github.com/onmetal/controller-utils v0.8.3
 	github.com/onmetal/onmetal-api v0.1.2-0.20230928225058-754dd4d16010
 	github.com/onsi/ginkgo/v2 v2.22.0
-	github.com/onsi/gomega v1.36.0
+	github.com/onsi/gomega v1.36.1
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/pflag v1.0.6-0.20210604193023-d5e0c0615ace
 	go.uber.org/mock v0.5.0
