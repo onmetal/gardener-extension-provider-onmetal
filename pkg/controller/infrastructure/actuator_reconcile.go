@@ -124,6 +124,12 @@ func (a *actuator) applyNATGateway(ctx context.Context, config *api.Infrastructu
 			NetworkRef: corev1.LocalObjectReference{
 				Name: network.Name,
 			},
+			// TODO(balpert): added for backward compatibility with onmetal
+			NetworkInterfaceSelector: &metav1.LabelSelector{
+				MatchLabels: map[string]string{
+					onmetal.ClusterNameLabel: cluster.ObjectMeta.Name,
+				},
+			},
 		},
 	}
 
