@@ -25,7 +25,7 @@ require (
 	k8s.io/api v0.32.1
 	k8s.io/apiextensions-apiserver v0.31.5
 	k8s.io/apimachinery v0.32.1
-	k8s.io/autoscaler/vertical-pod-autoscaler v1.2.2
+	k8s.io/autoscaler/vertical-pod-autoscaler v1.3.0
 	k8s.io/client-go v0.32.1
 	k8s.io/component-base v0.32.1
 	k8s.io/kubelet v0.32.1
@@ -134,7 +134,7 @@ require (
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/kube-aggregator v0.31.5 // indirect
 	k8s.io/kube-openapi v0.0.0-20241127205056-99599406b04f // indirect
-	k8s.io/metrics v0.31.5 // indirect
+	k8s.io/metrics v0.32.0 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.3 // indirect
 )
