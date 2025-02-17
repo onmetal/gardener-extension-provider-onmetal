@@ -94,8 +94,8 @@ github.com/gardener/etcd-druid/api v0.6.0 h1:XVrH3i2Phxf5wPnqI/9UL5I7Rb4kC+XYqqu
 github.com/gardener/etcd-druid/api v0.6.0/go.mod h1:vaVjHhgtJ22MhGxedLJ175gTfSG4l7xnAtlR6P9wRic=
 github.com/gardener/gardener v1.112.0 h1:g/pF4GuAbWbcksp+0lu2bcPpPb8LTCM4NWGWA6xI9J4=
 github.com/gardener/gardener v1.112.0/go.mod h1:xSG2VRZ3eSQxJRudwuf2hgccLJ5xKJgeirkPp+oqpcI=
-github.com/gardener/machine-controller-manager v0.56.0 h1:Qf/i53/KCgmQ5o1+jKF9XO+RRhaNWsy/IlIX0tWM3bw=
-github.com/gardener/machine-controller-manager v0.56.0/go.mod h1:eCng7De6OE15rndmMm6Q1fwMQI39esASCd3WKZ/lLmY=
+github.com/gardener/machine-controller-manager v0.56.1 h1:8L+69IArB0+r+ma+CJe/6SE7NMDs2GU9095RGSzwydk=
+github.com/gardener/machine-controller-manager v0.56.1/go.mod h1:eCng7De6OE15rndmMm6Q1fwMQI39esASCd3WKZ/lLmY=
 github.com/ghodss/yaml v0.0.0-20150909031657-73d445a93680/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/go-logr/logr v0.1.0/go.mod h1:ixOQHD9gLJUVQQ2ZOR7zLEifBX6tGkNJF4QyIY7sIas=
 github.com/go-logr/logr v0.2.0/go.mod h1:z6/tIYblkpsD+a4lm/fGIIU9mZ+XfAiaFtq7xTgseGU=
