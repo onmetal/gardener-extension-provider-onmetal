@@ -1,7 +1,7 @@
 module github.com/onmetal/gardener-extension-provider-onmetal
 
 go 1.21
-toolchain go1.23.1
+toolchain go1.24.1
 
 require (
 	github.com/Masterminds/semver v1.5.0
@@ -24,7 +24,7 @@ require (
 	go.uber.org/zap v1.27.0
 	k8s.io/api v0.32.2
 	k8s.io/apiextensions-apiserver v0.32.2
-	k8s.io/apimachinery v0.32.2
+	k8s.io/apimachinery v0.32.3
 	k8s.io/autoscaler/vertical-pod-autoscaler v1.3.0
 	k8s.io/client-go v0.32.2
 	k8s.io/component-base v0.32.2
