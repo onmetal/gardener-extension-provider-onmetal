@@ -10,7 +10,7 @@ require (
 	github.com/coreos/butane v0.23.0
 	github.com/coreos/go-systemd/v22 v22.5.0
 	github.com/gardener/etcd-druid v0.27.0
-	github.com/gardener/gardener v1.115.1
+	github.com/gardener/gardener v1.116.1
 	github.com/gardener/machine-controller-manager v0.57.1
 	github.com/go-logr/logr v1.4.2
 	github.com/imdario/mergo v0.3.16
@@ -29,8 +29,8 @@ require (
 	k8s.io/client-go v0.32.3
 	k8s.io/component-base v0.32.3
 	k8s.io/kubelet v0.32.3
-	k8s.io/utils v0.0.0-20241210054802-24370beab758
-	sigs.k8s.io/controller-runtime v0.20.3
+	k8s.io/utils v0.0.0-20250321185631-1f6e0b77f77e
+	sigs.k8s.io/controller-runtime v0.20.4
 	sigs.k8s.io/yaml v1.4.0
 )
 
@@ -60,6 +60,7 @@ require (
 	github.com/fsnotify/fsnotify v1.8.0 // indirect
 	github.com/fxamacker/cbor/v2 v2.7.0 // indirect
 	github.com/gardener/cert-management v0.17.5 // indirect
+	github.com/gardener/etcd-druid/api v0.28.0 // indirect
 	github.com/go-logr/zapr v1.3.0 // indirect
 	github.com/go-openapi/errors v0.22.0 // indirect
 	github.com/go-openapi/jsonpointer v0.21.0 // indirect
@@ -132,7 +133,7 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	helm.sh/helm/v3 v3.17.2 // indirect
-	istio.io/api v1.24.3 // indirect
+	istio.io/api v1.24.4 // indirect
 	istio.io/client-go v1.24.2 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/kube-aggregator v0.32.3 // indirect
