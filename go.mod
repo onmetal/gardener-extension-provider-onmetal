@@ -26,8 +26,8 @@ require (
 	k8s.io/apiextensions-apiserver v0.32.3
 	k8s.io/apimachinery v0.33.0
 	k8s.io/autoscaler/vertical-pod-autoscaler v1.3.0
-	k8s.io/client-go v0.32.3
-	k8s.io/component-base v0.32.3
+	k8s.io/client-go v0.33.0
+	k8s.io/component-base v0.33.0
 	k8s.io/kubelet v0.32.3
 	k8s.io/utils v0.0.0-20250321185631-1f6e0b77f77e
 	sigs.k8s.io/controller-runtime v0.20.4
@@ -109,8 +109,8 @@ require (
 	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
-	go.opentelemetry.io/otel v1.32.0 // indirect
-	go.opentelemetry.io/otel/trace v1.32.0 // indirect
+	go.opentelemetry.io/otel v1.33.0 // indirect
+	go.opentelemetry.io/otel/trace v1.33.0 // indirect
 	go.uber.org/automaxprocs v1.6.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go4.org/netipx v0.0.0-20220812043211-3cc044ffd68d // indirect
