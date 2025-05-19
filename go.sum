@@ -631,8 +631,8 @@ k8s.io/apimachinery v0.19.0/go.mod h1:DnPGDnARWFvYa3pMHgSxtbZb7gpzzAZ1pTfaUNDVlm
 k8s.io/apimachinery v0.28.3/go.mod h1:uQTKmIqs+rAYaq+DFaoD2X7pcjLOqbQX2AOiO0nIpb8=
 k8s.io/apimachinery v0.33.1 h1:mzqXWV8tW9Rw4VeW9rEkqvnxj59k1ezDUl20tFK/oM4=
 k8s.io/apimachinery v0.33.1/go.mod h1:BHW0YOu7n22fFv/JkYOEfkUYNRN0fj0BlvMFWA7b+SM=
-k8s.io/apiserver v0.33.0 h1:QqcM6c+qEEjkOODHppFXRiw/cE2zP85704YrQ9YaBbc=
-k8s.io/apiserver v0.33.0/go.mod h1:EixYOit0YTxt8zrO2kBU7ixAtxFce9gKGq367nFmqI8=
+k8s.io/apiserver v0.33.1 h1:yLgLUPDVC6tHbNcw5uE9mo1T6ELhJj7B0geifra3Qdo=
+k8s.io/apiserver v0.33.1/go.mod h1:VMbE4ArWYLO01omz+k8hFjAdYfc3GVAYPrhP2tTKccs=
 k8s.io/autoscaler/vertical-pod-autoscaler v1.3.1 h1:/4sWdEE8grPknfFOXS+hs3HfatymRHcseidxrGtWYIY=
 k8s.io/autoscaler/vertical-pod-autoscaler v1.3.1/go.mod h1:W4k7qGP8A9Xqp+UK+lM49AfsWkAdXzE80F/s8kxwWVI=
 k8s.io/client-go v0.28.3 h1:2OqNb72ZuTZPKCl+4gTKvqao0AMOl9f3o2ijbAj3LI4=
@@ -655,8 +655,8 @@ k8s.io/kube-openapi v0.0.0-20200805222855-6aeccd4b50c6/go.mod h1:UuqjUnNftUyPE5H
 k8s.io/kube-openapi v0.0.0-20230717233707-2695361300d9/go.mod h1:wZK2AVp1uHCp4VamDVgBP2COHZjqD1T68Rf0CM3YjSM=
 k8s.io/kube-openapi v0.0.0-20250318190949-c8a335a9a2ff h1:/usPimJzUKKu+m+TE36gUyGcf03XZEP0ZIKgKj35LS4=
 k8s.io/kube-openapi v0.0.0-20250318190949-c8a335a9a2ff/go.mod h1:5jIi+8yX4RIb8wk3XwBo5Pq2ccx4FP10ohkbSKCZoK8=
-k8s.io/kubelet v0.33.0 h1:4pJA2Ge6Rp0kDNV76KH7pTBiaV2T1a1874QHMcubuSU=
-k8s.io/kubelet v0.33.0/go.mod h1:iDnxbJQMy9DUNaML5L/WUlt3uJtNLWh7ZAe0JSp4Yi0=
+k8s.io/kubelet v0.33.1 h1:x4LCw1/iZVWOKA4RoITnuB8gMHnw31HPB3S0EF0EexE=
+k8s.io/kubelet v0.33.1/go.mod h1:8WpdC9M95VmsqIdGSQrajXooTfT5otEj8pGWOm+KKfQ=
 k8s.io/metrics v0.32.4 h1:R5mFVB7479sY/3+ioi2pPWC5mNu3TKEE/FpP5l+5P6c=
 k8s.io/metrics v0.32.4/go.mod h1:7RJ/A8hHSVY3LZvRzYSLqcl/0Xe1WbEkxt8zE/RzfYs=
 k8s.io/utils v0.0.0-20210802155522-efc7438f0176/go.mod h1:jPW/WVKK9YHAvNhRxK0md/EJ228hCsBRufyofKtW8HA=
