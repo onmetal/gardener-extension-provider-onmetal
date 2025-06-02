@@ -11,7 +11,7 @@ require (
 	github.com/coreos/butane v0.23.0
 	github.com/coreos/go-systemd/v22 v22.5.0
 	github.com/gardener/etcd-druid v0.27.0
-	github.com/gardener/gardener v1.119.0
+	github.com/gardener/gardener v1.120.0
 	github.com/gardener/machine-controller-manager v0.58.0
 	github.com/go-logr/logr v1.4.2
 	github.com/imdario/mergo v0.3.16
@@ -24,7 +24,7 @@ require (
 	go.uber.org/mock v0.5.2
 	go.uber.org/zap v1.27.0
 	k8s.io/api v0.33.1
-	k8s.io/apiextensions-apiserver v0.32.4
+	k8s.io/apiextensions-apiserver v0.32.5
 	k8s.io/apimachinery v0.33.1
 	k8s.io/autoscaler/vertical-pod-autoscaler v1.4.0
 	k8s.io/client-go v1.5.2
@@ -61,7 +61,7 @@ require (
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/fxamacker/cbor/v2 v2.8.0 // indirect
 	github.com/gardener/cert-management v0.17.5 // indirect
-	github.com/gardener/etcd-druid/api v0.29.1 // indirect
+	github.com/gardener/etcd-druid/api v0.30.1 // indirect
 	github.com/go-logr/zapr v1.3.0 // indirect
 	github.com/go-openapi/errors v0.22.0 // indirect
 	github.com/go-openapi/jsonpointer v0.21.1 // indirect
@@ -99,7 +99,7 @@ require (
 	github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring v0.82.2 // indirect
 	github.com/prometheus/client_golang v1.22.0 // indirect
 	github.com/prometheus/client_model v0.6.2 // indirect
-	github.com/prometheus/common v0.63.0 // indirect
+	github.com/prometheus/common v0.64.0 // indirect
 	github.com/prometheus/procfs v0.16.1 // indirect
 	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/spf13/afero v1.14.0 // indirect
@@ -118,7 +118,7 @@ require (
 	golang.org/x/crypto v0.38.0 // indirect
 	golang.org/x/exp v0.0.0-20250506013437-ce4c2cf36ca6 // indirect
 	golang.org/x/net v0.40.0 // indirect
-	golang.org/x/oauth2 v0.29.0 // indirect
+	golang.org/x/oauth2 v0.30.0 // indirect
 	golang.org/x/sync v0.14.0 // indirect
 	golang.org/x/sys v0.33.0 // indirect
 	golang.org/x/term v0.32.0 // indirect
@@ -135,7 +135,7 @@ require (
 	istio.io/api v1.25.3 // indirect
 	istio.io/client-go v1.25.1 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
-	k8s.io/kube-aggregator v0.32.4 // indirect
+	k8s.io/kube-aggregator v0.32.5 // indirect
 	k8s.io/kube-openapi v0.0.0-20250318190949-c8a335a9a2ff // indirect
 	k8s.io/metrics v0.33.0 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
