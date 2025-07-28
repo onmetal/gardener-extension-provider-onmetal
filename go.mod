@@ -10,6 +10,7 @@ require (
 	github.com/aws/aws-sdk-go v1.55.6
 	github.com/coreos/butane v0.24.0
 	github.com/coreos/go-systemd/v22 v22.5.0
+	github.com/gardener/etcd-druid v0.26.1
 	github.com/gardener/gardener v1.122.1
 	github.com/gardener/machine-controller-manager v0.59.0
 	github.com/go-logr/logr v1.4.3
@@ -17,7 +18,7 @@ require (
 	github.com/onmetal/controller-utils v0.8.3
 	github.com/onmetal/onmetal-api v0.1.2-0.20230928225058-754dd4d16010
 	github.com/onsi/ginkgo/v2 v2.23.4
-	github.com/onsi/gomega v1.37.0
+	github.com/onsi/gomega v1.38.0
 	github.com/spf13/cobra v1.9.1
 	github.com/spf13/pflag v1.0.6
 	go.uber.org/mock v0.5.2
