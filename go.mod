@@ -10,6 +10,7 @@ require (
 	github.com/aws/aws-sdk-go v1.55.6
 	github.com/coreos/butane v0.24.0
 	github.com/coreos/go-systemd/v22 v22.5.0
+	github.com/gardener/etcd-druid v0.26.1
 	github.com/gardener/gardener v1.122.1
 	github.com/gardener/machine-controller-manager v0.59.0
 	github.com/go-logr/logr v1.4.3
@@ -22,13 +23,13 @@ require (
 	github.com/spf13/pflag v1.0.6
 	go.uber.org/mock v0.5.2
 	go.uber.org/zap v1.27.0
-	k8s.io/api v0.33.2
+	k8s.io/api v0.33.3
 	k8s.io/apiextensions-apiserver v0.33.2
-	k8s.io/apimachinery v0.33.2
+	k8s.io/apimachinery v0.33.3
 	k8s.io/autoscaler/vertical-pod-autoscaler v1.4.1
 	k8s.io/client-go v1.5.2
-	k8s.io/component-base v0.33.2
-	k8s.io/kubelet v0.33.2
+	k8s.io/component-base v0.33.3
+	k8s.io/kubelet v0.33.3
 	k8s.io/utils v0.0.0-20250604170112-4c0f3b243397
 	sigs.k8s.io/controller-runtime v0.21.0
 	sigs.k8s.io/yaml v1.5.0
@@ -161,7 +162,7 @@ require (
 	helm.sh/helm/v3 v3.18.3 // indirect
 	istio.io/api v1.25.3 // indirect
 	istio.io/client-go v1.25.1 // indirect
-	k8s.io/apiserver v0.33.2 // indirect
+	k8s.io/apiserver v0.33.3 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/kube-aggregator v0.33.2 // indirect
 	k8s.io/kube-openapi v0.0.0-20250318190949-c8a335a9a2ff // indirect
