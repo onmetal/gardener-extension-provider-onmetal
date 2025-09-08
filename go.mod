@@ -8,7 +8,7 @@ require (
 	github.com/Masterminds/semver v1.5.0
 	github.com/Masterminds/sprig v2.22.0+incompatible
 	github.com/aws/aws-sdk-go v1.55.8
-	github.com/coreos/butane v0.24.0
+	github.com/coreos/butane v0.25.0
 	github.com/coreos/go-systemd/v22 v22.6.0
 	github.com/gardener/gardener v1.125.1
 	github.com/gardener/machine-controller-manager v0.59.2
