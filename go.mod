@@ -11,7 +11,7 @@ require (
 	github.com/coreos/butane v0.24.0
 	github.com/coreos/go-systemd/v22 v22.6.0
 	github.com/gardener/gardener v1.125.1
-	github.com/gardener/machine-controller-manager v0.59.2
+	github.com/gardener/machine-controller-manager v0.60.0
 	github.com/go-logr/logr v1.4.3
 	github.com/imdario/mergo v0.3.16
 	github.com/onmetal/controller-utils v0.8.3
