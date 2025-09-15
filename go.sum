@@ -879,8 +879,8 @@ k8s.io/apiextensions-apiserver v0.33.4 h1:rtq5SeXiDbXmSwxsF0MLe2Mtv3SwprA6wp+5qh
 k8s.io/apiextensions-apiserver v0.33.4/go.mod h1:mWXcZQkQV1GQyxeIjYApuqsn/081hhXPZwZ2URuJeSs=
 k8s.io/apimachinery v0.19.0/go.mod h1:DnPGDnARWFvYa3pMHgSxtbZb7gpzzAZ1pTfaUNDVlmA=
 k8s.io/apimachinery v0.28.3/go.mod h1:uQTKmIqs+rAYaq+DFaoD2X7pcjLOqbQX2AOiO0nIpb8=
-k8s.io/apimachinery v0.34.0 h1:eR1WO5fo0HyoQZt1wdISpFDffnWOvFLOOeJ7MgIv4z0=
-k8s.io/apimachinery v0.34.0/go.mod h1:/GwIlEcWuTX9zKIg2mbw0LRFIsXwrfoVxn+ef0X13lw=
+k8s.io/apimachinery v0.34.1 h1:dTlxFls/eikpJxmAC7MVE8oOeP1zryV7iRyIjB0gky4=
+k8s.io/apimachinery v0.34.1/go.mod h1:/GwIlEcWuTX9zKIg2mbw0LRFIsXwrfoVxn+ef0X13lw=
 k8s.io/apiserver v0.33.4 h1:6N0TEVA6kASUS3owYDIFJjUH6lgN8ogQmzZvaFFj1/Y=
 k8s.io/apiserver v0.33.4/go.mod h1:8ODgXMnOoSPLMUg1aAzMFx+7wTJM+URil+INjbTZCok=
 k8s.io/autoscaler/vertical-pod-autoscaler v1.4.2 h1:47RLgLhrxXfdBchTeNT2S9Xe9o+Y4kThExLfcGGUQMk=
