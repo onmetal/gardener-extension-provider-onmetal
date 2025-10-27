@@ -10,7 +10,7 @@ require (
 	github.com/aws/aws-sdk-go v1.55.8
 	github.com/coreos/butane v0.25.1
 	github.com/coreos/go-systemd/v22 v22.6.0
-	github.com/gardener/gardener v1.130.0
+	github.com/gardener/gardener v1.130.1
 	github.com/gardener/machine-controller-manager v0.60.2
 	github.com/go-logr/logr v1.4.3
 	github.com/imdario/mergo v0.3.16
