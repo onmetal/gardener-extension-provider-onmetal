@@ -16,7 +16,7 @@ require (
 	github.com/onmetal/onmetal-api v0.1.2-0.20230928225058-754dd4d16010
 	github.com/onsi/ginkgo/v2 v2.27.2
 	github.com/onsi/gomega v1.38.2
-	github.com/spf13/cobra v1.10.1
+	github.com/spf13/cobra v1.10.2
 	github.com/spf13/pflag v1.0.10
 	go.uber.org/mock v0.6.0
 	go.uber.org/zap v1.27.1
