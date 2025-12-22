@@ -1,6 +1,6 @@
 module github.com/onmetal/gardener-extension-provider-onmetal
 
-go 1.24.5
+go 1.25.0
 
 require (
 	github.com/Masterminds/semver v1.5.0
@@ -20,9 +20,9 @@ require (
 	github.com/spf13/pflag v1.0.10
 	go.uber.org/mock v0.6.0
 	go.uber.org/zap v1.27.1
-	k8s.io/api v0.34.3
+	k8s.io/api v0.35.0
 	k8s.io/apiextensions-apiserver v0.34.3
-	k8s.io/apimachinery v0.34.3
+	k8s.io/apimachinery v0.35.0
 	k8s.io/autoscaler/vertical-pod-autoscaler v1.5.1
 	k8s.io/client-go v1.5.2
 	k8s.io/component-base v0.34.3
@@ -194,7 +194,7 @@ require (
 	k8s.io/apiserver v0.34.3 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/kube-aggregator v0.34.3 // indirect
-	k8s.io/kube-openapi v0.0.0-20250814151709-d7b6acb124c3 // indirect
+	k8s.io/kube-openapi v0.0.0-20250910181357-589584f1c912 // indirect
 	k8s.io/metrics v0.34.3 // indirect
 	sigs.k8s.io/json v0.0.0-20250730193827-2d320260d730 // indirect
 	sigs.k8s.io/randfill v1.0.0 // indirect
