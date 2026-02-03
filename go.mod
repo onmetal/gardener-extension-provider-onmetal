@@ -7,7 +7,7 @@ require (
 	github.com/Masterminds/sprig v2.22.0+incompatible
 	github.com/aws/aws-sdk-go v1.55.8
 	github.com/coreos/butane v0.26.0
-	github.com/coreos/go-systemd/v22 v22.6.0
+	github.com/coreos/go-systemd/v22 v22.7.0
 	github.com/gardener/gardener v1.135.1
 	github.com/gardener/machine-controller-manager v0.61.1
 	github.com/go-logr/logr v1.4.3
