@@ -20,7 +20,7 @@ require (
 	github.com/spf13/pflag v1.0.10
 	go.uber.org/mock v0.6.0
 	go.uber.org/zap v1.27.1
-	k8s.io/api v0.35.2
+	k8s.io/api v0.35.3
 	k8s.io/apiextensions-apiserver v0.35.2
 	k8s.io/apimachinery v0.35.3
 	k8s.io/autoscaler/vertical-pod-autoscaler v1.6.0
