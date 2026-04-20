@@ -8,7 +8,7 @@ require (
 	github.com/aws/aws-sdk-go v1.55.8
 	github.com/coreos/butane v0.27.0
 	github.com/coreos/go-systemd/v22 v22.7.0
-	github.com/gardener/gardener v1.140.0
+	github.com/gardener/gardener v1.140.1
 	github.com/gardener/machine-controller-manager v0.61.3
 	github.com/go-logr/logr v1.4.3
 	github.com/imdario/mergo v0.3.16
@@ -85,7 +85,7 @@ require (
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/fxamacker/cbor/v2 v2.9.0 // indirect
 	github.com/gardener/cert-management v0.19.0 // indirect
-	github.com/gardener/etcd-druid/api v0.36.1 // indirect
+	github.com/gardener/etcd-druid/api v0.36.2 // indirect
 	github.com/go-jose/go-jose/v4 v4.1.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-logr/zapr v1.3.0 // indirect
