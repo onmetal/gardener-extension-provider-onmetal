@@ -1,6 +1,6 @@
 module github.com/onmetal/gardener-extension-provider-onmetal
 
-go 1.26.0
+go 1.26.2
 
 require (
 	github.com/Masterminds/semver v1.5.0
@@ -10,7 +10,7 @@ require (
 	github.com/coreos/go-systemd/v22 v22.7.0
 	github.com/gardener/gardener v1.141.0
 	github.com/gardener/gardener/pkg/apis v1.140.0
-	github.com/gardener/machine-controller-manager v0.61.3
+	github.com/gardener/machine-controller-manager v0.62.0
 	github.com/go-logr/logr v1.4.3
 	github.com/imdario/mergo v0.3.16
 	github.com/onmetal/controller-utils v0.8.3
