@@ -9,26 +9,26 @@ require (
 	github.com/coreos/butane v0.28.0
 	github.com/coreos/go-systemd/v22 v22.7.0
 	github.com/gardener/gardener v1.142.1
-	github.com/gardener/gardener/pkg/apis v1.142.0
+	github.com/gardener/gardener/pkg/apis v1.143.0
 	github.com/gardener/machine-controller-manager v0.62.0
 	github.com/go-logr/logr v1.4.3
 	github.com/imdario/mergo v0.3.16
 	github.com/onmetal/controller-utils v0.8.3
 	github.com/onmetal/onmetal-api v0.1.2-0.20230928225058-754dd4d16010
-	github.com/onsi/ginkgo/v2 v2.28.3
+	github.com/onsi/ginkgo/v2 v2.29.0
 	github.com/onsi/gomega v1.41.0
 	github.com/spf13/cobra v1.10.2
 	github.com/spf13/pflag v1.0.10
 	go.uber.org/mock v0.6.0
 	go.uber.org/zap v1.28.0
 	k8s.io/api v0.36.1
-	k8s.io/apiextensions-apiserver v0.35.4
+	k8s.io/apiextensions-apiserver v0.35.5
 	k8s.io/apimachinery v0.36.1
 	k8s.io/autoscaler/vertical-pod-autoscaler v1.6.0
 	k8s.io/client-go v1.5.2
 	k8s.io/component-base v0.36.1
 	k8s.io/kubelet v0.36.1
-	k8s.io/utils v0.0.0-20260319190234-28399d86e0b5
+	k8s.io/utils v0.0.0-20260507154919-ff6756f316d2
 	sigs.k8s.io/controller-runtime v0.23.3
 	sigs.k8s.io/yaml v1.6.0
 )
@@ -221,7 +221,7 @@ require (
 	helm.sh/helm/v3 v3.20.2 // indirect
 	istio.io/api v1.29.2 // indirect
 	istio.io/client-go v1.29.2 // indirect
-	k8s.io/apiserver v0.35.4 // indirect
+	k8s.io/apiserver v0.35.5 // indirect
 	k8s.io/klog/v2 v2.140.0 // indirect
 	k8s.io/kube-aggregator v0.35.4 // indirect
 	k8s.io/kube-openapi v0.0.0-20260317180543-43fb72c5454a // indirect
